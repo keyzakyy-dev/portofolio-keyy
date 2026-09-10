@@ -16,7 +16,7 @@ export default function App() {
   }, [])
 
   return (
-    <main className={isLoaded ? 'relative min-h-dvh' : 'relative h-dvh overflow-hidden'}>
+    <main className={isLoaded ? 'relative' : 'relative h-dvh overflow-hidden'}>
       <Header transition={transition} />
       {transition && (
         <>

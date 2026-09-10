@@ -40,3 +40,22 @@
 @utility font-script {
   font-family: var(--font-script);
 }
+
+@keyframes tech-idle {
+  0%,
+  87.5%,
+  100% {
+    color: var(--color-muted);
+  }
+  93.75% {
+    color: var(--color-primary);
+  }
+}
+
+.tech-icon-idle {
+  animation: tech-idle 4s ease-in-out infinite;
+}
+
+.tech-row:hover .tech-icon-idle {
+  animation: none;
+}
