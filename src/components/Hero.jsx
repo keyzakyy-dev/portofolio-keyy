@@ -88,16 +88,30 @@ export default function Hero() {
       {/* CTAs */}
       <div className="mt-7 flex w-full flex-col gap-3 px-4 sm:mt-8 sm:w-auto sm:flex-row sm:px-0">
         <MotionEffect delay={0.45} className="w-full sm:w-auto">
-          <a
+          <motion.a
             href="#contact"
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.03] active:scale-[0.98] sm:w-auto"
+            initial="rest"
+            whileHover="hover"
+            animate="rest"
+            whileTap={{ scale: 0.98 }}
+            className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.03] sm:w-auto"
           >
             Hire Me
-            <ArrowUpRight
-              size={16}
-              className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </a>
+            <motion.span
+              className="inline-flex"
+              variants={{
+                hover: {
+                  x: [0, 4, -1, 3],
+                  y: [0, -4, 1, -3],
+                  rotate: [0, -12, 15, 0],
+                  scale: [1, 1.25, 1.1],
+                },
+              }}
+              transition={{ duration: 0.45, ease: 'easeInOut' }}
+            >
+              <ArrowUpRight size={16} />
+            </motion.span>
+          </motion.a>
         </MotionEffect>
         <MotionEffect delay={0.6} className="w-full sm:w-auto">
           <a

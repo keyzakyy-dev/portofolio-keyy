@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
 @layer base {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none;
+    mix-blend-mode: normal;
+  }
+
   :root {
     --color-primary: #0a0a0a;
     --color-surface: #ffffff;

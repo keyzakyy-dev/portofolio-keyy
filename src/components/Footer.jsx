@@ -44,27 +44,27 @@ export default function Footer() {
           ))}
         </div>
 
-        <p className="text-xs text-[var(--color-muted)] sm:text-sm">
-          Built by{' '}
+        <p className="flex flex-wrap items-center justify-center gap-x-1 text-xs text-[var(--color-muted)] sm:text-sm">
+          <span>Built by</span>
           <a
             href="#"
             className="font-medium transition-colors hover:opacity-70"
           >
             keyzakyy.
-          </a>{' '}
-          The source code is available on{' '}
+          </a>
+          <span>The source code is available on</span>
           <a
             href="https://github.com/YOUR_USERNAME"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1 font-medium transition-colors hover:opacity-70"
           >
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-3.5">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-3.5 shrink-0">
               <path d={githubPath} />
             </svg>
-            GitHub
+            <span>GitHub</span>
           </a>
-          .
+          <span>.</span>
         </p>
       </motion.div>
     </footer>

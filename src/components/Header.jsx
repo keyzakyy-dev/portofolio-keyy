@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
-import { Moon, Sun } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { ThemeToggler } from './ThemeToggler.jsx'
 
 function useIsMobile() {
   const [isMobile, setIsMobile] = useState(() =>
@@ -126,24 +126,14 @@ export default function Header({ transition = true }) {
         )}
 
         {/* Dark mode toggle */}
-        <motion.button
-          onClick={() => setDark(!dark)}
-          aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+        <motion.div
           variants={CONTROLS_VARIANTS}
           initial="hidden"
           animate={transition ? 'visible' : 'hidden'}
-          className={`absolute right-5 top-1/2 -translate-y-1/2 flex h-8 w-[52px] cursor-pointer items-center rounded-full bg-[var(--color-border)] p-1 transition-colors ${
-            dark ? 'justify-end' : 'justify-start'
-          }`}
+          className="absolute right-5 top-1/2 -translate-y-1/2"
         >
-          <motion.span
-            layout
-            transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-            className="flex size-6 items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-surface)]"
-          >
-            {dark ? <Sun size={14} /> : <Moon size={14} />}
-          </motion.span>
-        </motion.button>
+          <ThemeToggler dark={dark} setDark={setDark} />
+        </motion.div>
       </div>
     </motion.header>
   )
