@@ -1,13 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Header, { CONTENT_VARIANTS } from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import CardGrid from './components/CardGrid.jsx'
 import Footer from './components/Footer.jsx'
-import ServicesPage from './pages/ServicesPage.jsx'
-import ResumePage from './pages/ResumePage.jsx'
-import WorkPage from './pages/WorkPage.jsx'
-import ContactPage from './pages/ContactPage.jsx'
+
+const ServicesPage = lazy(() => import('./pages/ServicesPage.jsx'))
+const ResumePage = lazy(() => import('./pages/ResumePage.jsx'))
+const WorkPage = lazy(() => import('./pages/WorkPage.jsx'))
+const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
 
 const PAGES = { services: ServicesPage, resume: ResumePage, work: WorkPage, contact: ContactPage }
 
@@ -34,7 +35,9 @@ export default function App() {
       <Header transition={transition} />
       <AnimatePresence mode="wait">
         {PageComponent ? (
-          <PageComponent key={page} onBack={() => navigate(null)} onNavigate={navigate} />
+          <Suspense fallback={null}>
+            <PageComponent key={page} onBack={() => navigate(null)} onNavigate={navigate} />
+          </Suspense>
         ) : (
           transition && (
             <motion.div

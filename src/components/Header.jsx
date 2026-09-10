@@ -90,7 +90,7 @@ export default function Header({ transition = true }) {
       initial="center"
       animate={transition ? 'topLeft' : 'center'}
       transition={{ type: 'spring', stiffness: 200, damping: 30 }}
-      className="fixed z-50 flex items-center justify-center"
+      className="absolute z-50 flex items-center justify-center"
     >
       <div className="relative max-w-6xl w-full size-full">
         {/* Navbar background */}

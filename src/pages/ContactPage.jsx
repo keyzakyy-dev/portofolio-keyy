@@ -97,6 +97,8 @@ export default function ContactPage({ onBack }) {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
+                role="status"
+                aria-live="polite"
                 className="flex flex-col items-center gap-4 rounded-2xl border border-emerald-500/30 bg-emerald-500/5 p-8 text-center"
               >
                 <div className="flex size-14 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500">
@@ -130,14 +132,15 @@ export default function ContactPage({ onBack }) {
               <form onSubmit={handleSubmit} className="space-y-5">
                 {/* Service Selector */}
                 <div>
-                  <label className="mb-2 block text-xs font-semibold text-[var(--color-primary)]">
+                  <p className="mb-2 block text-xs font-semibold text-[var(--color-primary)]" id="service-label">
                     Pilih Layanan yang Dibutuhkan:
-                  </label>
-                  <div className="flex flex-wrap gap-2">
+                  </p>
+                  <div className="flex flex-wrap gap-2" role="group" aria-labelledby="service-label">
                     {serviceOptions.map((srv) => (
                       <button
                         key={srv}
                         type="button"
+                        aria-pressed={selectedService === srv}
                         onClick={() => setSelectedService(srv)}
                         className={`cursor-pointer rounded-xl px-3 py-1.5 text-xs font-medium transition-all ${
                           selectedService === srv
@@ -153,10 +156,11 @@ export default function ContactPage({ onBack }) {
 
                 {/* Name */}
                 <div>
-                  <label className="mb-1.5 block text-xs font-semibold text-[var(--color-primary)]">
+                  <label htmlFor="contact-name" className="mb-1.5 block text-xs font-semibold text-[var(--color-primary)]">
                     Nama Lengkap / Instansi
                   </label>
                   <input
+                    id="contact-name"
                     type="text"
                     required
                     placeholder="Contoh: Budi Santoso"
@@ -166,27 +170,47 @@ export default function ContactPage({ onBack }) {
                   />
                 </div>
 
-                {/* Contact (Email or WhatsApp) */}
-                <div>
-                  <label className="mb-1.5 block text-xs font-semibold text-[var(--color-primary)]">
-                    Email atau No. WhatsApp
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="nama@email.com atau 08123xxxx"
-                    value={form.contact}
-                    onChange={(e) => setForm({ ...form, contact: e.target.value })}
-                    className="w-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-primary)] placeholder:text-[var(--color-muted)] outline-none transition-all focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]/20"
-                  />
+                {/* Email & Phone in 2 Columns */}
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                  <div>
+                    <label htmlFor="contact-email" className="mb-1.5 flex items-center justify-between text-xs font-semibold text-[var(--color-primary)]">
+                      <span>Alamat Email</span>
+                      <span className="text-[10px] font-normal text-[var(--color-muted)]">Wajib</span>
+                    </label>
+                    <input
+                      id="contact-email"
+                      type="email"
+                      required
+                      placeholder="nama@email.com"
+                      value={form.email}
+                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      className="w-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-primary)] placeholder:text-[var(--color-muted)] outline-none transition-all focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]/20"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="contact-phone" className="mb-1.5 flex items-center justify-between text-xs font-semibold text-[var(--color-primary)]">
+                      <span>No. WhatsApp / Telepon</span>
+                      <span className="text-[10px] font-normal text-[var(--color-muted)]">Opsional</span>
+                    </label>
+                    <input
+                      id="contact-phone"
+                      type="tel"
+                      placeholder="0812-3456-7890"
+                      value={form.phone}
+                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      className="w-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-primary)] placeholder:text-[var(--color-muted)] outline-none transition-all focus:border-[var(--color-primary)] focus:ring-1 focus:ring-[var(--color-primary)]/20"
+                    />
+                  </div>
                 </div>
 
                 {/* Message */}
                 <div>
-                  <label className="mb-1.5 block text-xs font-semibold text-[var(--color-primary)]">
+                  <label htmlFor="contact-message" className="mb-1.5 block text-xs font-semibold text-[var(--color-primary)]">
                     Detail Kebutuhan & Pesan
                   </label>
                   <textarea
+                    id="contact-message"
                     required
                     rows={4}
                     placeholder="Ceritakan tentang proyek, referensi desain, target deadline, atau pertanyaan Anda..."
@@ -265,22 +289,39 @@ export default function ContactPage({ onBack }) {
             animate="visible"
             className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6 shadow-xs"
           >
-            <div className="flex size-11 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
-              <Mail size={20} />
+            <div className="flex items-center justify-between">
+              <div className="flex size-11 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
+                <Mail size={20} />
+              </div>
+              <a
+                href="mailto:zakyxne@gmail.com"
+                className="inline-flex items-center gap-1 rounded-full bg-[var(--color-primary)]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[var(--color-primary)] hover:bg-[var(--color-primary)]/20 transition-colors"
+              >
+                <span>Kirim Email</span>
+                <ExternalLink size={10} />
+              </a>
             </div>
-            <h3 className="mt-4 text-base font-bold text-[var(--color-primary)]">Email</h3>
+            <h3 className="mt-4 text-base font-bold text-[var(--color-primary)]">Email Resmi</h3>
             <p className="mt-1 text-xs text-[var(--color-muted)]">
-              Kirim brief dokumen atau penawaran kerja sama formal.
+              Kirim berkas brief dokumen, proposal, atau penawaran kerja sama formal.
             </p>
             <div className="mt-3 flex items-center justify-between rounded-xl border border-[var(--color-border)]/60 bg-[var(--color-surface)] px-3 py-2 text-xs">
-              <span className="font-mono text-[var(--color-primary)]">zakyxne@gmail.com</span>
+              <span className="font-mono text-[var(--color-primary)] select-all">zakyxne@gmail.com</span>
               <button
                 type="button"
                 onClick={copyEmail}
-                className="cursor-pointer text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors"
+                className="inline-flex cursor-pointer items-center gap-1 text-[var(--color-muted)] hover:text-[var(--color-primary)] transition-colors"
                 title="Salin Email"
               >
-                {copied ? <CheckCircle2 size={15} className="text-emerald-500" /> : <Copy size={15} />}
+                {copied ? (
+                  <span className="flex items-center gap-1 text-emerald-500 font-medium text-[11px]">
+                    <CheckCircle2 size={14} /> Tersalin
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-1 text-[11px]">
+                    <Copy size={13} /> Salin
+                  </span>
+                )}
               </button>
             </div>
           </motion.div>
