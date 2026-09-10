@@ -58,7 +58,7 @@ function BlurRevealHeading() {
   )
 }
 
-export default function Hero() {
+export default function Hero({ onNavigate }) {
   return (
     <section className="flex flex-col items-center pt-6 pb-10 text-center sm:pt-8 sm:pb-12 md:pt-12 md:pb-16">
       {/* Heading - two-layer blur reveal like animate-ui */}
@@ -88,13 +88,14 @@ export default function Hero() {
       {/* CTAs */}
       <div className="mt-7 flex w-full flex-col gap-3 px-4 sm:mt-8 sm:w-auto sm:flex-row sm:px-0">
         <MotionEffect delay={0.45} className="w-full sm:w-auto">
-          <motion.a
-            href="#contact"
+          <motion.button
+            type="button"
+            onClick={() => onNavigate?.('contact')}
             initial="rest"
             whileHover="hover"
             animate="rest"
             whileTap={{ scale: 0.98 }}
-            className="group inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.03] sm:w-auto"
+            className="group inline-flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.03] sm:w-auto"
           >
             Hire Me
             <motion.span
@@ -111,15 +112,16 @@ export default function Hero() {
             >
               <ArrowUpRight size={16} />
             </motion.span>
-          </motion.a>
+          </motion.button>
         </MotionEffect>
         <MotionEffect delay={0.6} className="w-full sm:w-auto">
-          <a
-            href="#work"
-            className="inline-flex w-full items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-6 py-3 text-sm font-medium text-[var(--color-primary)] transition-transform hover:scale-[1.03] active:scale-[0.98] sm:w-auto"
+          <button
+            type="button"
+            onClick={() => onNavigate?.('work')}
+            className="inline-flex w-full cursor-pointer items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-6 py-3 text-sm font-medium text-[var(--color-primary)] transition-transform hover:scale-[1.03] active:scale-[0.98] sm:w-auto"
           >
             View Work
-          </a>
+          </button>
         </MotionEffect>
       </div>
 
