@@ -13,8 +13,11 @@ function CardPreview({ type }) {
     return (
       <div className="flex h-40 flex-col gap-2 px-5 pb-4 sm:h-44">
         {['UI Design', 'Web Dev'].map((s) => (
-          <div key={s} className="flex flex-1 items-center gap-2 rounded-lg bg-[var(--color-surface)] px-3 py-2">
-            <span className="size-2 rounded-full bg-[var(--color-primary)]" />
+          <div
+            key={s}
+            className="dot-pattern flex flex-1 items-center gap-2.5 rounded-lg border border-[var(--color-border)]/60 bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-surface-alt)] px-3.5 py-2 shadow-sm"
+          >
+            <span className="size-2 shrink-0 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-muted)]" />
             <span className="text-sm text-[var(--color-muted)]">{s}</span>
           </div>
         ))}
@@ -23,30 +26,35 @@ function CardPreview({ type }) {
   }
   if (type === 'resume') {
     return (
-      <div className="flex h-40 items-center gap-2.5 px-5 pb-4 sm:h-44">
-        <div className="size-12 shrink-0 rounded-lg bg-[var(--color-surface)]" />
-        <div className="flex w-full flex-col gap-1.5">
-          <div className="h-2 w-3/4 rounded-full bg-[var(--color-surface)]" />
-          <div className="h-2 w-1/2 rounded-full bg-[var(--color-surface)]" />
-          <div className="h-2 w-2/3 rounded-full bg-[var(--color-surface)]" />
+      <div className="flex h-40 items-center gap-3 px-5 pb-4 sm:h-44">
+        <div className="dot-pattern size-14 shrink-0 rounded-xl border border-[var(--color-border)]/60 bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-surface-alt)] shadow-sm" />
+        <div className="flex w-full flex-col gap-2">
+          <div className="h-2.5 w-3/4 rounded-full bg-gradient-to-r from-[var(--color-border)] to-[var(--color-border)]/40" />
+          <div className="h-2 w-1/2 rounded-full bg-gradient-to-r from-[var(--color-border)] to-[var(--color-border)]/40" />
+          <div className="h-2 w-2/3 rounded-full bg-gradient-to-r from-[var(--color-border)] to-[var(--color-border)]/40" />
         </div>
       </div>
     )
   }
   if (type === 'work') {
     return (
-      <div className="grid h-40 grid-cols-2 grid-rows-2 gap-1.5 px-5 pb-4 sm:h-44">
+      <div className="grid h-40 grid-cols-2 grid-rows-2 gap-2 px-5 pb-4 sm:h-44">
         {[0, 1, 2, 3].map((i) => (
-          <div key={i} className="rounded-lg bg-[var(--color-surface)]" />
+          <div
+            key={i}
+            className="dot-pattern rounded-lg border border-[var(--color-border)]/60 bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-surface-alt)] shadow-sm"
+          />
         ))}
       </div>
     )
   }
   return (
-    <div className="flex h-40 flex-col gap-1.5 px-5 pb-4 sm:h-44">
-      <div className="flex-1 rounded-lg bg-[var(--color-surface)]" />
-      <div className="flex-1 rounded-lg bg-[var(--color-surface)]" />
-      <div className="flex-1 rounded-lg bg-[var(--color-primary)]" />
+    <div className="flex h-40 flex-col gap-2 px-5 pb-4 sm:h-44">
+      <div className="dot-pattern flex-1 rounded-lg border border-[var(--color-border)]/60 bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-surface-alt)] shadow-sm" />
+      <div className="dot-pattern flex-1 rounded-lg border border-[var(--color-border)]/60 bg-gradient-to-br from-[var(--color-surface)] to-[var(--color-surface-alt)] shadow-sm" />
+      <div className="flex flex-1 items-center justify-center rounded-lg bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-muted)] shadow-sm">
+        <span className="size-1.5 rounded-full bg-[var(--color-surface)]/70" />
+      </div>
     </div>
   )
 }
@@ -74,14 +82,14 @@ export default function CardGrid() {
               href={card.href}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group flex w-[75vw] max-w-[280px] flex-col overflow-hidden rounded-2xl bg-[var(--color-surface-alt)] p-4 transition-shadow hover:shadow-xl sm:w-[calc(50vw-3rem)] sm:rounded-3xl sm:p-5 lg:w-full lg:max-w-none"
+              className="group flex h-full w-[75vw] max-w-[280px] flex-col overflow-hidden rounded-2xl border border-[var(--color-border)]/60 bg-gradient-to-b from-[var(--color-surface-alt)] to-[var(--color-surface)] shadow-sm transition-shadow hover:shadow-xl sm:w-[calc(50vw-3rem)] sm:rounded-3xl sm:p-5 lg:w-full lg:max-w-none"
             >
-              <div className="flex items-center justify-between">
-                <span className="font-script text-xl text-[var(--color-primary)]">
+              <div className="flex items-center justify-between p-4 pb-0 sm:p-5 sm:pb-0">
+                <span className="text-lg font-bold tracking-tight text-[var(--color-primary)]">
                   {card.label}
                 </span>
-                <span className="rounded-full p-2 text-[var(--color-muted)] transition-colors group-hover:bg-[var(--color-surface)] group-hover:text-[var(--color-primary)]">
-                  <ArrowUpRight size={18} />
+                <span className="flex size-8 items-center justify-center rounded-full border border-[var(--color-border)]/60 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)]">
+                  <ArrowUpRight size={15} />
                 </span>
               </div>
               <CardPreview type={card.preview} />
