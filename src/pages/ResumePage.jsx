@@ -212,9 +212,9 @@ export default function ResumePage({ onBack, onNavigate }) {
                   <Phone size={14} className="text-[var(--color-primary)] shrink-0" />
                   0851 6666 4226
                 </a>
-                <a href="mailto:zakyxne@gmail.com" className="inline-flex items-center gap-1.5 hover:text-[var(--color-primary)] transition-colors">
+                <a href="mailto:keyzakyy.dev@gmail.com" className="inline-flex items-center gap-1.5 hover:text-[var(--color-primary)] transition-colors">
                   <Mail size={14} className="text-[var(--color-primary)] shrink-0" />
-                  zakyxne@gmail.com
+                  keyzakyy.dev@gmail.com
                 </a>
               </div>
 

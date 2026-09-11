@@ -118,7 +118,7 @@ Ikuti langkah-langkah berikut untuk menjalankan proyek ini di komputer lokal:
 
 - **GitHub:** [@keyzakyy-dev](https://github.com/keyzakyy-dev)
 - **Instagram:** [@keyzakyy](https://www.instagram.com/keyzakyy/)
-- **Email:** [zakyxne@gmail.com](mailto:zakyxne@gmail.com)
+- **Email:** [keyzakyy.dev@gmail.com](mailto:keyzakyy.dev@gmail.com)
 - **WhatsApp:** [+62 851-6666-4226](https://wa.me/6285166664226)
 
 ---

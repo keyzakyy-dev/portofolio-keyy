@@ -8,8 +8,13 @@ import {
   MessageSquare,
   Check,
   Copy,
+  AlertCircle,
+  Loader2,
 } from 'lucide-react'
 import { githubPath, instagramPath } from '../constants/icons.js'
+
+const CONTACT_EMAIL = 'keyzakyy.dev@gmail.com'
+const WEB3FORMS_KEY = import.meta.env.VITE_WEB3FORMS_KEY
 
 const serviceOptions = [
   'Website',
@@ -27,13 +32,47 @@ const inView = (delay = 0) => ({
 
 export default function ContactPage({ onBack }) {
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState(null)
   const [selectedService, setSelectedService] = useState('Website')
   const [form, setForm] = useState({ name: '', contact: '', message: '' })
   const [copied, setCopied] = useState(false)
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    setSent(true)
+    setError(null)
+
+    if (!WEB3FORMS_KEY) {
+      handleWhatsAppDirect()
+      return
+    }
+
+    setSending(true)
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Pesan Baru: ${selectedService} — ${form.name}`,
+          name: form.name,
+          contact: form.contact,
+          layanan: selectedService,
+          message: form.message,
+          from_name: 'Portfolio keyzakyy',
+        }),
+      })
+      const data = await res.json()
+      if (data.success) {
+        setSent(true)
+      } else {
+        setError(data.message || 'Gagal mengirim pesan. Coba lagi atau hubungi via WhatsApp.')
+      }
+    } catch {
+      setError('Terjadi kesalahan jaringan. Coba lagi atau hubungi via WhatsApp.')
+    } finally {
+      setSending(false)
+    }
   }
 
   const handleWhatsAppDirect = () => {
@@ -44,7 +83,7 @@ export default function ContactPage({ onBack }) {
   }
 
   const copyEmail = () => {
-    navigator.clipboard.writeText('zakyxne@gmail.com')
+    navigator.clipboard.writeText(CONTACT_EMAIL)
     setCopied(true)
     setTimeout(() => setCopied(false), 2000)
   }
@@ -74,7 +113,7 @@ export default function ContactPage({ onBack }) {
           Contact
         </h1>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
-          Tertarik memulai proyek bersama atau butuh konsultasi? Kirimkan pesan atau hubungi langsung via WhatsApp.
+          Tertarik memulai proyek bersama atau butuh konsultasi? Kirimkan pesan langsung ke email atau hubungi via WhatsApp.
         </p>
       </motion.div>
 
@@ -197,10 +236,20 @@ export default function ContactPage({ onBack }) {
                 <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
                   <button
                     type="submit"
-                    className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                    disabled={sending}
+                    className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.02] active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    <Send size={15} />
-                    <span>Kirim Pesan</span>
+                    {sending ? (
+                      <>
+                        <Loader2 size={15} className="animate-spin" />
+                        <span>Mengirim...</span>
+                      </>
+                    ) : (
+                      <>
+                        <Send size={15} />
+                        <span>Kirim Pesan</span>
+                      </>
+                    )}
                   </button>
 
                   <button
@@ -212,6 +261,18 @@ export default function ContactPage({ onBack }) {
                     <span>Chat via WhatsApp</span>
                   </button>
                 </div>
+
+                {error && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -5 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    role="alert"
+                    className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/5 px-4 py-2.5 text-xs font-medium text-red-600 dark:text-red-400"
+                  >
+                    <AlertCircle size={14} className="shrink-0" />
+                    <span>{error}</span>
+                  </motion.p>
+                )}
               </form>
             )}
           </div>
@@ -259,7 +320,7 @@ export default function ContactPage({ onBack }) {
                 Email
               </span>
               <p className="mt-1 text-lg font-bold text-[var(--color-primary)]">
-                zakyxne@gmail.com
+                keyzakyy.dev@gmail.com
               </p>
               <p className="mt-1 text-xs text-[var(--color-muted)]">
                 Untuk penawaran resmi, dokumen brief, atau proposal kerja sama.
@@ -268,7 +329,7 @@ export default function ContactPage({ onBack }) {
 
             <div className="mt-5 flex items-center gap-2">
               <a
-                href="mailto:zakyxne@gmail.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[var(--color-primary)] px-4 py-2 text-xs font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.02]"
               >
                 <Mail size={14} />
