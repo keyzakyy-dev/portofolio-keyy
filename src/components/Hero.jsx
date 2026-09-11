@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useMemo, useId } from 'react'
 import { ArrowUpRight, User } from 'lucide-react'
 
 const techStack = [
@@ -11,7 +12,8 @@ const techStack = [
   { label: 'JavaScript', viewBox: '0 0 24 24', d: 'M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z' },
 ]
 
-const HEADING = 'Halo!, Saya keyzakyy.'
+const GREETINGS = ['Halo!', 'Hola!', 'Ciao!', 'Olá!']
+const HOLD_DELAY = 2500
 const CHAR_STAGGER = 0.05
 const CHAR_DELAY = 0.4
 
@@ -29,6 +31,14 @@ const charItem = {
 
 const motionEffectTransition = { type: 'spring', stiffness: 200, damping: 20 }
 
+function segmentGraphemes(text) {
+  if (typeof Intl?.Segmenter === 'function') {
+    const seg = new Intl.Segmenter(undefined, { granularity: 'grapheme' })
+    return Array.from(seg.segment(text), (s) => s.segment)
+  }
+  return Array.from(text)
+}
+
 function MotionEffect({ children, delay = 0, className }) {
   return (
     <motion.div
@@ -42,14 +52,77 @@ function MotionEffect({ children, delay = 0, className }) {
   )
 }
 
+function MorphingText({ texts, holdDelay = HOLD_DELAY, delay = 0 }) {
+  const uniqueId = useId()
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [started, setStarted] = useState(false)
+
+  const currentText = texts[currentIndex]
+
+  const chars = useMemo(() => {
+    const graphemes = segmentGraphemes(currentText)
+    const counts = new Map()
+    return graphemes.map((raw) => {
+      const key = raw.normalize('NFC')
+      const n = (counts.get(key) ?? 0) + 1
+      counts.set(key, n)
+      return { layoutId: `${uniqueId}-${key}-${n}`, label: key === ' ' ? '\u00A0' : key }
+    })
+  }, [currentText, uniqueId])
+
+  useEffect(() => {
+    const t = setTimeout(() => setStarted(true), delay)
+    return () => clearTimeout(t)
+  }, [delay])
+
+  useEffect(() => {
+    if (!started || texts.length <= 1) return
+    let idx = 0
+    const interval = setInterval(() => {
+      idx = (idx + 1) % texts.length
+      setCurrentIndex(idx)
+    }, holdDelay)
+    return () => clearInterval(interval)
+  }, [started, texts.length, holdDelay])
+
+  return (
+    <AnimatePresence mode="popLayout" initial={false}>
+      {chars.map((char) => (
+        <motion.span
+          key={char.layoutId}
+          layoutId={char.layoutId}
+          style={{ display: 'inline-block' }}
+          aria-hidden="true"
+          initial={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
+          animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+          exit={{ opacity: 0, scale: 0.8, filter: 'blur(10px)' }}
+          transition={{ type: 'spring', stiffness: 125, damping: 25, mass: 0.4 }}
+        >
+          {char.label}
+        </motion.span>
+      ))}
+    </AnimatePresence>
+  )
+}
+
 function BlurRevealHeading() {
   return (
     <motion.span variants={charContainer} initial="hidden" animate="visible">
-      {Array.from(HEADING).map((ch, i) =>
+      {Array.from('Halo!').map((ch, i) =>
         ch === ' ' ? (
           <span key={i}> </span>
         ) : (
           <motion.span key={i} variants={charItem} className="inline-block">
+            {ch}
+          </motion.span>
+        )
+      )}
+      <span> </span>
+      {Array.from('Saya keyzakyy.').map((ch, i) =>
+        ch === ' ' ? (
+          <span key={`s${i}`}> </span>
+        ) : (
+          <motion.span key={`s${i}`} variants={charItem} className="inline-block">
             {ch}
           </motion.span>
         )
@@ -59,6 +132,14 @@ function BlurRevealHeading() {
 }
 
 export default function Hero({ onNavigate }) {
+  const revealDuration = CHAR_DELAY + GREETINGS[0].length * CHAR_STAGGER + 0.8
+  const [morphing, setMorphing] = useState(false)
+
+  useEffect(() => {
+    const t = setTimeout(() => setMorphing(true), revealDuration * 1000)
+    return () => clearTimeout(t)
+  }, [revealDuration])
+
   return (
     <section className="flex flex-col items-center pt-6 pb-10 text-center sm:pt-8 sm:pb-12 md:pt-12 md:pb-16">
 
@@ -70,16 +151,17 @@ export default function Hero({ onNavigate }) {
           {/* Heading */}
           <div className="mt-5 grid max-w-3xl sm:mt-6">
             <h1
-              aria-hidden="true"
-              className="col-start-1 row-start-1 text-3xl font-bold tracking-tight text-[var(--color-primary)] opacity-0 sm:text-4xl md:text-5xl lg:text-6xl"
-            >
-              {HEADING}
-            </h1>
-            <h1
-              aria-hidden="true"
+              aria-label="Halo! Saya keyzakyy."
               className="col-start-1 row-start-1 text-3xl font-bold tracking-tight text-[var(--color-primary)] sm:text-4xl md:text-5xl lg:text-6xl"
             >
-              <BlurRevealHeading />
+              {morphing ? (
+                <>
+                  <MorphingText texts={GREETINGS} />
+                  {' Saya keyzakyy.'}
+                </>
+              ) : (
+                <BlurRevealHeading />
+              )}
             </h1>
           </div>
 
