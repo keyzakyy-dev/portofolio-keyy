@@ -27,10 +27,12 @@ const projects = [
   },
 ]
 
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.08, type: 'spring', stiffness: 200, damping: 20 } }),
-}
+const inView = (delay = 0) => ({
+  initial: { opacity: 0, y: 40, scale: 0.95 },
+  whileInView: { opacity: 1, y: 0, scale: 1 },
+  viewport: { once: true, margin: '-60px' },
+  transition: { delay, type: 'spring', stiffness: 200, damping: 20 },
+})
 
 function GithubIcon() {
   return (
@@ -52,30 +54,28 @@ export default function WorkPage({ onBack }) {
       transition={{ duration: 0.3 }}
       className="mx-auto max-w-5xl px-5 pt-24 pb-16"
     >
-      <button
+      <motion.button
         type="button"
         onClick={onBack}
+        {...inView(0)}
         className="group mb-10 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 shadow-xs"
       >
         <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
         Kembali ke Beranda
-      </button>
+      </motion.button>
 
-      <div className="mb-12">
+      <motion.div {...inView(0.05)} className="mb-12">
         <h1 className="font-script text-4xl font-bold text-[var(--color-primary)] sm:text-6xl">
           Work <span className="font-sans text-2xl sm:text-3xl font-light text-[var(--color-muted)]">— Proyek Pilihan</span>
         </h1>
         <p className="mt-3 max-w-xl text-sm text-[var(--color-muted)] sm:text-base">
           Koleksi proyek yang mencerminkan keahlian dalam membangun produk digital.
         </p>
-      </div>
+      </motion.div>
 
       {featured && (
         <motion.div
-          custom={0}
-          variants={item}
-          initial="hidden"
-          animate="visible"
+          {...inView(0.1)}
           className="group relative mb-8 overflow-hidden rounded-3xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/20 hover:shadow-lg"
         >
           <div className="dot-pattern absolute inset-0 opacity-40" />
@@ -122,10 +122,7 @@ export default function WorkPage({ onBack }) {
         {rest.map((proj, i) => (
           <motion.div
             key={proj.title}
-            custom={i + 1}
-            variants={item}
-            initial="hidden"
-            animate="visible"
+            {...inView(i * 0.1)}
             className="group flex flex-col justify-between rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-6 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/20 hover:shadow-md"
           >
             <div>
@@ -133,11 +130,9 @@ export default function WorkPage({ onBack }) {
                 <span className="text-4xl font-bold text-[var(--color-border)] leading-none select-none">
                   {String(i + 2).padStart(2, '0')}
                 </span>
-                <motion.span
-                  className="flex size-8 items-center justify-center rounded-full border border-[var(--color-border)]/60 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-xs"
-                >
+                <span className="flex size-8 items-center justify-center rounded-full border border-[var(--color-border)]/60 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-xs">
                   <ArrowUpRight size={14} />
-                </motion.span>
+                </span>
               </div>
               <h2 className="text-base font-bold text-[var(--color-primary)]">{proj.title}</h2>
               <p className="mt-1.5 text-xs leading-relaxed text-[var(--color-muted)]">{proj.desc}</p>

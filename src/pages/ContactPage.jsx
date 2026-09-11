@@ -23,14 +23,12 @@ const serviceOptions = [
   'Lainnya',
 ]
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 16 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.06, type: 'spring', stiffness: 200, damping: 22 },
-  }),
-}
+const inView = (delay = 0) => ({
+  initial: { opacity: 0, y: 40, scale: 0.95 },
+  whileInView: { opacity: 1, y: 0, scale: 1 },
+  viewport: { once: true, margin: '-60px' },
+  transition: { delay, type: 'spring', stiffness: 200, damping: 20 },
+})
 
 export default function ContactPage({ onBack }) {
   const [sent, setSent] = useState(false)
@@ -64,34 +62,31 @@ export default function ContactPage({ onBack }) {
       className="mx-auto max-w-5xl px-5 pt-24 pb-20"
     >
       {/* Back Button */}
-      <button
+      <motion.button
         type="button"
         onClick={onBack}
+        {...inView(0)}
         className="group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)] shadow-xs"
       >
         <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
         <span>Kembali ke Beranda</span>
-      </button>
+      </motion.button>
 
       {/* Header Section */}
-      <div className="mb-12">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-3.5 py-1 text-xs font-semibold text-[var(--color-primary)] shadow-xs mb-3">
-          <span className="size-2 rounded-full bg-emerald-500 animate-pulse" />
-          Terbuka untuk Kolaborasi & Proyek Baru
-        </span>
+      <motion.div {...inView(0.05)} className="mb-12">
         <h1 className="font-script text-4xl font-bold tracking-tight text-[var(--color-primary)] sm:text-6xl">
           Get in Touch <span className="font-sans text-2xl sm:text-3xl font-light text-[var(--color-muted)]">— Mari Diskusi</span>
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
           Punya ide website, kebutuhan editing video, desain logo, poster, atau pengolahan data? Kirimkan pesan melalui form atau langsung chat via WhatsApp.
         </p>
-      </div>
+      </motion.div>
 
       {/* Main Grid: Form + Info Cards */}
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
 
         {/* Left Column: Interactive Form (7 Cols) */}
-        <div className="lg:col-span-7">
+        <motion.div {...inView(0.1)} className="lg:col-span-7">
           <div className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6 sm:p-8 shadow-xs">
             {sent ? (
               <motion.div
@@ -242,17 +237,14 @@ export default function ContactPage({ onBack }) {
               </form>
             )}
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Column: Quick Contact Cards & Socials (5 Cols) */}
         <div className="space-y-4 lg:col-span-5">
 
           {/* WhatsApp Direct Card */}
           <motion.div
-            custom={0}
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
+            {...inView(0.15)}
             className="rounded-3xl border border-emerald-500/30 bg-emerald-500/5 p-6 shadow-xs"
           >
             <div className="flex items-center justify-between">
@@ -283,10 +275,7 @@ export default function ContactPage({ onBack }) {
 
           {/* Email Direct Card */}
           <motion.div
-            custom={1}
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
+            {...inView(0.2)}
             className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6 shadow-xs"
           >
             <div className="flex items-center justify-between">
@@ -328,10 +317,7 @@ export default function ContactPage({ onBack }) {
 
           {/* Location & Response Time */}
           <motion.div
-            custom={2}
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
+            {...inView(0.25)}
             className="grid grid-cols-2 gap-3"
           >
             <div className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-4 shadow-xs">
@@ -355,10 +341,7 @@ export default function ContactPage({ onBack }) {
 
           {/* Social Profiles */}
           <motion.div
-            custom={3}
-            variants={itemVariants}
-            initial="hidden"
-            animate="visible"
+            {...inView(0.3)}
             className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-5 shadow-xs"
           >
             <h4 className="text-xs font-semibold text-[var(--color-primary)] mb-3">Tautan Media Sosial</h4>
@@ -393,7 +376,7 @@ export default function ContactPage({ onBack }) {
       </div>
 
       {/* Mini FAQ Section */}
-      <div className="mt-16 rounded-3xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-6 sm:p-9 shadow-xs">
+      <motion.div {...inView(0)} className="mt-16 rounded-3xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-6 sm:p-9 shadow-xs">
         <div className="mb-6 flex items-center gap-2">
           <Sparkles size={18} className="text-amber-500" />
           <h3 className="text-lg font-bold text-[var(--color-primary)]">Pertanyaan yang Sering Diajukan</h3>
@@ -419,7 +402,7 @@ export default function ContactPage({ onBack }) {
             </p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </motion.div>
   )
 }

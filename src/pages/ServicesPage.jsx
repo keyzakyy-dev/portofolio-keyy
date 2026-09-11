@@ -39,14 +39,12 @@ const processSteps = [
   },
 ]
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: (i) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: i * 0.08, type: 'spring', stiffness: 200, damping: 22 },
-  }),
-}
+const inView = (delay = 0) => ({
+  initial: { opacity: 0, y: 40, scale: 0.95 },
+  whileInView: { opacity: 1, y: 0, scale: 1 },
+  viewport: { once: true, margin: '-60px' },
+  transition: { delay, type: 'spring', stiffness: 200, damping: 20 },
+})
 
 export default function ServicesPage({ onBack, onNavigate }) {
   return (
@@ -58,35 +56,35 @@ export default function ServicesPage({ onBack, onNavigate }) {
       className="mx-auto max-w-5xl px-5 pt-24 pb-20"
     >
       {/* Back Button */}
-      <button
+      <motion.button
         type="button"
         onClick={onBack}
+        {...inView(0)}
         className="group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)] shadow-xs"
       >
         <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
         <span>Kembali ke Beranda</span>
-      </button>
+      </motion.button>
 
       {/* Hero / Header Section */}
-      <div className="mb-12">
+      <motion.div
+        {...inView(0.05)}
+        className="mb-12"
+      >
         <h1 className="font-script text-4xl font-bold tracking-tight text-[var(--color-primary)] sm:text-6xl">
           Services <span className="font-sans text-2xl sm:text-3xl font-light text-[var(--color-muted)]">& Digital Creation</span>
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
           Layanan profesional mencakup pembuatan website modern, video editing interaktif, desain logo profesional, hingga poster & grafis digital.
         </p>
-      </div>
+      </motion.div>
 
       {/* Bento Grid Section */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
 
         {/* Tile 1: Jasa Pembuatan Website (Span 2) */}
         <motion.div
-          custom={0}
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover={{ y: -3 }}
+          {...inView(0)}
           className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg md:col-span-2"
         >
           <div>
@@ -136,11 +134,7 @@ export default function ServicesPage({ onBack, onNavigate }) {
 
         {/* Tile 2: Editing Video (Span 1) */}
         <motion.div
-          custom={1}
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover={{ y: -3 }}
+          {...inView(0.07)}
           className="group flex flex-col justify-between rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg"
         >
           <div>
@@ -168,11 +162,7 @@ export default function ServicesPage({ onBack, onNavigate }) {
 
         {/* Tile 3: Desain Logo (Span 1) */}
         <motion.div
-          custom={2}
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover={{ y: -3 }}
+          {...inView(0.14)}
           className="group flex flex-col justify-between rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg"
         >
           <div>
@@ -200,11 +190,7 @@ export default function ServicesPage({ onBack, onNavigate }) {
 
         {/* Tile 4: Desain Poster & Grafis (Span 2) */}
         <motion.div
-          custom={3}
-          variants={itemVariants}
-          initial="hidden"
-          animate="visible"
-          whileHover={{ y: -3 }}
+          {...inView(0.07)}
           className="group flex flex-col justify-between rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg md:col-span-2"
         >
           <div>
@@ -241,7 +227,10 @@ export default function ServicesPage({ onBack, onNavigate }) {
 
       {/* Workflow / Process Section */}
       <div className="mt-20">
-        <div className="mb-10 text-center">
+        <motion.div
+          {...inView(0)}
+          className="mb-10 text-center"
+        >
           <span className="inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-3 py-1 text-xs font-semibold text-[var(--color-muted)]">
             Workflow
           </span>
@@ -251,7 +240,7 @@ export default function ServicesPage({ onBack, onNavigate }) {
           <p className="mt-2 text-sm text-[var(--color-muted)]">
             Proses terstruktur dari diskusi awal hingga proyek siap diserahkan.
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {processSteps.map((proc, i) => {
@@ -259,10 +248,7 @@ export default function ServicesPage({ onBack, onNavigate }) {
             return (
               <motion.div
                 key={proc.step}
-                custom={i}
-                variants={itemVariants}
-                initial="hidden"
-                animate="visible"
+                {...inView(i * 0.1)}
                 className="relative flex flex-col justify-between rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-6 shadow-xs"
               >
                 <div>
@@ -287,9 +273,7 @@ export default function ServicesPage({ onBack, onNavigate }) {
 
       {/* Bottom CTA Banner */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.4 }}
+        {...inView(0)}
         className="relative mt-20 overflow-hidden rounded-3xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] shadow-sm"
       >
         <div className="dot-pattern absolute inset-0 opacity-50" />

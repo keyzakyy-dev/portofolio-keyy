@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
 import {
-  ArrowUpRight,
   Wrench,
   FileBadge,
   FolderGit2,
@@ -17,7 +16,7 @@ const cards = [
 function CardPreview({ type }) {
   if (type === 'services') {
     return (
-      <div className="flex h-44 items-center justify-center p-4">
+      <div className="flex h-32 items-center justify-center p-4">
         <motion.div
           variants={{
             hover: { rotate: [0, 45, 0], scale: 1.15 },
@@ -33,7 +32,7 @@ function CardPreview({ type }) {
 
   if (type === 'resume') {
     return (
-      <div className="flex h-44 items-center justify-center p-4">
+      <div className="flex h-32 items-center justify-center p-4">
         <motion.div
           variants={{
             hover: { y: [-4, 6, -4], scale: 1.12 },
@@ -49,7 +48,7 @@ function CardPreview({ type }) {
 
   if (type === 'work') {
     return (
-      <div className="flex h-44 items-center justify-center p-4">
+      <div className="flex h-32 items-center justify-center p-4">
         <motion.div
           variants={{
             hover: { scale: [1, 1.2, 1.1], rotate: [0, -10, 0] },
@@ -64,7 +63,7 @@ function CardPreview({ type }) {
   }
 
   return (
-    <div className="flex h-44 items-center justify-center p-4">
+    <div className="flex h-32 items-center justify-center p-4">
       <motion.div
         variants={{
           hover: { x: [0, 8, -2, 0], y: [0, -8, 2, 0], scale: 1.15 },
@@ -104,14 +103,11 @@ export default function CardGrid({ onNavigate }) {
               whileHover="hover"
               animate="rest"
               whileTap={{ scale: 0.98 }}
-              className="group flex h-full w-[75vw] max-w-[280px] cursor-pointer flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] text-left shadow-xs transition-all duration-300 hover:shadow-xl hover:border-[var(--color-primary)]/20 sm:w-[calc(50vw-3rem)] sm:rounded-3xl lg:w-full lg:max-w-none"
+              className="group flex h-full w-[75vw] max-w-[280px] cursor-pointer flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] text-left shadow-xs transition-all duration-300 hover:shadow-xl sm:w-[calc(50vw-3rem)] sm:rounded-3xl lg:w-full lg:max-w-none"
             >
-              <div className="flex items-center justify-between p-4 pb-2 sm:p-5 sm:pb-2">
+              <div className="flex flex-col items-center justify-center px-4 pt-4 sm:px-5 sm:pt-5">
                 <span className="font-script text-2xl font-bold tracking-tight text-[var(--color-primary)]">
                   {card.label}
-                </span>
-                <span className="flex size-8 items-center justify-center rounded-full border border-[var(--color-border)]/60 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-xs">
-                  <ArrowUpRight size={15} />
                 </span>
               </div>
               <CardPreview type={card.preview} />
