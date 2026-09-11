@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion'
 import { githubPath, youtubePath, instagramPath, facebookPath } from '../constants/icons.js'
 
 const socialLinks = [
@@ -10,15 +9,9 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[var(--color-surface)] pt-3 pb-7">
+    <footer className="no-print bg-[var(--color-surface)] pt-3 pb-7">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-5 text-center">
-        {/* Social icons */}
-        <motion.div
-          initial={{ opacity: 0, y: 100, scale: 0.5 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 1.9 }}
-          className="flex items-center gap-1"
-        >
+        <div className="flex items-center gap-1">
           {socialLinks.map((social) => (
             <a
               key={social.label}
@@ -33,14 +26,9 @@ export default function Footer() {
               </svg>
             </a>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 100, scale: 0.5 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 2.0 }}
-          className="flex flex-wrap items-center justify-center gap-x-1 text-xs text-[var(--color-muted)] sm:text-sm"
-        >
+        <p className="flex flex-wrap items-center justify-center gap-x-1 text-xs text-[var(--color-muted)] sm:text-sm">
           <span>Built by</span>
           <a
             href="#"
@@ -61,7 +49,7 @@ export default function Footer() {
             <span>GitHub</span>
           </a>
           <span>.</span>
-        </motion.p>
+        </p>
       </div>
     </footer>
   )

@@ -32,32 +32,34 @@ export default function App() {
   const PageComponent = page ? PAGES[page] : null
 
   return (
-    <main className={isLoaded ? 'relative' : 'relative h-dvh overflow-hidden'}>
+    <main className={isLoaded ? 'relative min-h-screen flex flex-col justify-between' : 'relative h-dvh overflow-hidden'}>
       <Header transition={transition} />
-      <AnimatePresence mode="wait">
-        {PageComponent ? (
-          <Suspense fallback={null}>
-            <PageComponent key={page} onBack={() => navigate(null)} onNavigate={navigate} />
-          </Suspense>
-        ) : (
-          transition && (
-            <motion.div
-              key="home"
-              variants={CONTENT_VARIANTS}
-              initial="hidden"
-              animate="visible"
-              exit={{ opacity: 0 }}
-            >
-              <div className="mx-auto max-w-6xl px-5" style={{ paddingTop: 68 }}>
-                <Hero onNavigate={navigate} />
-                <CounterStats />
-                <CardGrid onNavigate={navigate} />
-              </div>
-              <Footer />
-            </motion.div>
-          )
-        )}
-      </AnimatePresence>
+      <div className="flex-1">
+        <AnimatePresence mode="wait">
+          {PageComponent ? (
+            <Suspense fallback={null}>
+              <PageComponent key={page} onBack={() => navigate(null)} onNavigate={navigate} />
+            </Suspense>
+          ) : (
+            transition && (
+              <motion.div
+                key="home"
+                variants={CONTENT_VARIANTS}
+                initial="hidden"
+                animate="visible"
+                exit={{ opacity: 0 }}
+              >
+                <div className="mx-auto max-w-6xl px-5" style={{ paddingTop: 68 }}>
+                  <Hero onNavigate={navigate} />
+                  <CounterStats />
+                  <CardGrid onNavigate={navigate} />
+                </div>
+              </motion.div>
+            )
+          )}
+        </AnimatePresence>
+      </div>
+      {transition && <Footer />}
     </main>
   )
 }
