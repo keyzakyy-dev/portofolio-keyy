@@ -1,0 +1,16 @@
+{
+  "name": "Sayyid Dzaky Farhan — Portfolio",
+  "short_name": "Sayyid Dzaky",
+  "description": "Portofolio Sayyid Dzaky Farhan (keyzakyy) — Frontend developer spesialis React, Tailwind CSS, animasi UI, video editing, desain logo & grafis.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#0a0a0a",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
