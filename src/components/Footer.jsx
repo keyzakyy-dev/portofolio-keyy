@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { githubPath, youtubePath, instagramPath, facebookPath } from '../constants/icons.js'
 
 const socialLinks = [
@@ -7,11 +8,17 @@ const socialLinks = [
   { path: facebookPath, href: 'https://www.facebook.com/iyokeyza/', label: 'Facebook' },
 ]
 
-export default function Footer() {
+export default function Footer({ delay = 1.8 }) {
   return (
-    <footer className="no-print bg-[var(--color-surface)] pt-3 pb-7">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-5 text-center">
-        <div className="flex items-center gap-1">
+    <footer className="no-print bg-[var(--color-surface)] pt-1 pb-6">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-2.5 px-5 text-center">
+        {/* Social icons */}
+        <motion.div
+          initial={{ opacity: 0, y: 100, scale: 0.5 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20, delay }}
+          className="flex items-center gap-1"
+        >
           {socialLinks.map((social) => (
             <a
               key={social.label}
@@ -26,9 +33,14 @@ export default function Footer() {
               </svg>
             </a>
           ))}
-        </div>
+        </motion.div>
 
-        <p className="flex flex-wrap items-center justify-center gap-x-1 text-xs text-[var(--color-muted)] sm:text-sm">
+        <motion.p
+          initial={{ opacity: 0, y: 100, scale: 0.5 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: delay + 0.1 }}
+          className="flex flex-wrap items-center justify-center gap-x-1 text-xs text-[var(--color-muted)] sm:text-sm"
+        >
           <span>Built by</span>
           <a
             href="#"
@@ -49,7 +61,7 @@ export default function Footer() {
             <span>GitHub</span>
           </a>
           <span>.</span>
-        </p>
+        </motion.p>
       </div>
     </footer>
   )

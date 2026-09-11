@@ -32,7 +32,7 @@ export default function App() {
   const PageComponent = page ? PAGES[page] : null
 
   return (
-    <main className={isLoaded ? 'relative min-h-screen flex flex-col justify-between' : 'relative h-dvh overflow-hidden'}>
+    <main className={isLoaded ? 'relative min-h-screen flex flex-col' : 'relative h-dvh overflow-hidden'}>
       <Header transition={transition} />
       <div className="flex-1">
         <AnimatePresence mode="wait">
@@ -59,7 +59,7 @@ export default function App() {
           )}
         </AnimatePresence>
       </div>
-      {transition && <Footer />}
+      {transition && <Footer key={page || 'home'} delay={page ? 0.15 : 1.8} />}
     </main>
   )
 }
