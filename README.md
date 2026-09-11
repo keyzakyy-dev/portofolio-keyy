@@ -8,7 +8,7 @@
 
 > Website portofolio personal yang mengusung gaya estetika minimalis hitam-putih mengacu pada referensi **Animate UI**. Menampilkan identitas developer, katalog layanan digital, riwayat pengalaman interaktif, showcase proyek, dan saluran kontak langsung.
 
-🌐 **Live Demo:** [https://keyzakyy.vercel.app](https://keyzakyy.vercel.app) *(atau link deployment Anda)*
+🌐 **Live Demo:** [https://keyzakyy.vercel.app](https://keyzakyy.vercel.app)
 
 ---
 
