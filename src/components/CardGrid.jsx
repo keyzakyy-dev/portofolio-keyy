@@ -24,7 +24,7 @@ function CardPreview({ type }) {
           transition={{ duration: 0.5, ease: 'easeInOut' }}
           className="text-[var(--color-muted)]"
         >
-          <Wrench size={64} strokeWidth={1.5} />
+          <Wrench size={64} strokeWidth={1} />
         </motion.div>
       </div>
     )
@@ -40,7 +40,7 @@ function CardPreview({ type }) {
           transition={{ duration: 0.4, ease: 'easeInOut' }}
           className="text-[var(--color-muted)]"
         >
-          <FileBadge size={64} strokeWidth={1.5} />
+          <FileBadge size={64} strokeWidth={1} />
         </motion.div>
       </div>
     )
@@ -56,7 +56,7 @@ function CardPreview({ type }) {
           transition={{ duration: 0.4, ease: 'easeInOut' }}
           className="text-[var(--color-muted)]"
         >
-          <FolderGit2 size={64} strokeWidth={1.5} />
+          <FolderGit2 size={64} strokeWidth={1} />
         </motion.div>
       </div>
     )
@@ -71,7 +71,7 @@ function CardPreview({ type }) {
         transition={{ duration: 0.4, ease: 'easeInOut' }}
         className="text-[var(--color-muted)]"
       >
-        <Send size={64} strokeWidth={1.5} />
+        <Send size={64} strokeWidth={1} />
       </motion.div>
     </div>
   )
