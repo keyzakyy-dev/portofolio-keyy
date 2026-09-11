@@ -92,8 +92,8 @@ export default function Header({ transition = true }) {
       transition={{ type: 'spring', stiffness: 200, damping: 30 }}
       className="absolute z-50 flex items-center justify-center"
     >
-      <div className="relative max-w-6xl w-full size-full">
-        {/* Navbar background */}
+      <div className="relative w-full size-full">
+        {/* Navbar background — full width */}
         <motion.div
           variants={NAVBAR_BG_VARIANTS}
           initial="hidden"
@@ -101,39 +101,42 @@ export default function Header({ transition = true }) {
           className="absolute inset-0 bg-[var(--color-surface)]/80 backdrop-blur-md"
         />
 
-        {/* Logo - layout animation center -> top-left */}
-        {transition ? (
-          <motion.div
-            layoutId="keyy-logo"
-            className="absolute left-5"
-            animate={{ top: isMobile ? 16 : 22 }}
-          >
-            <a
-              href="#"
-              aria-label="keyy"
-              className="inline-flex items-center text-[var(--color-primary)] transition-colors duration-200 hover:opacity-70"
+        {/* Inner container sejajar dengan konten */}
+        <div className="relative mx-auto max-w-6xl px-5 size-full">
+          {/* Logo - layout animation center -> top-left */}
+          {transition ? (
+            <motion.div
+              layoutId="keyy-logo"
+              className="absolute left-5"
+              animate={{ top: isMobile ? 16 : 22 }}
             >
-              {navbarLogo}
-            </a>
-          </motion.div>
-        ) : (
-          <motion.div
-            layoutId="keyy-logo"
-            className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
-          >
-            <WordmarkDraw />
-          </motion.div>
-        )}
+              <a
+                href="#"
+                aria-label="keyy"
+                className="inline-flex items-center text-[var(--color-primary)] transition-colors duration-200 hover:opacity-70"
+              >
+                {navbarLogo}
+              </a>
+            </motion.div>
+          ) : (
+            <motion.div
+              layoutId="keyy-logo"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+            >
+              <WordmarkDraw />
+            </motion.div>
+          )}
 
-        {/* Dark mode toggle */}
-        <motion.div
-          variants={CONTROLS_VARIANTS}
-          initial="hidden"
-          animate={transition ? 'visible' : 'hidden'}
-          className="absolute right-5 top-1/2 -translate-y-1/2"
-        >
-          <ThemeToggler dark={dark} setDark={setDark} />
-        </motion.div>
+          {/* Dark mode toggle */}
+          <motion.div
+            variants={CONTROLS_VARIANTS}
+            initial="hidden"
+            animate={transition ? 'visible' : 'hidden'}
+            className="absolute right-5 top-1/2 -translate-y-1/2"
+          >
+            <ThemeToggler dark={dark} setDark={setDark} />
+          </motion.div>
+        </div>
       </div>
     </motion.header>
   )

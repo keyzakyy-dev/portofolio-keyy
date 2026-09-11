@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+﻿import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
   ArrowLeft,
@@ -211,7 +211,7 @@ export default function ResumePage({ onBack }) {
         type="button"
         onClick={onBack}
         {...inView(0)}
-        className="no-print group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)] shadow-xs"
+        className="no-print group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)]"
       >
         <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
         <span>Kembali ke Beranda</span>
@@ -223,7 +223,7 @@ export default function ResumePage({ onBack }) {
         <div className="min-w-0 flex-1">
           {/* Profile Header Card */}
           <section id="profile">
-            <motion.div {...inView(0.05)} className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6 sm:p-9 shadow-xs">
+            <motion.div {...inView(0.05)} className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6 sm:p-9">
               <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex-1">
                   <h1 className="text-3xl font-bold tracking-tight text-[var(--color-primary)] sm:text-4xl uppercase">
@@ -255,7 +255,7 @@ export default function ResumePage({ onBack }) {
                 <button
                   type="button"
                   onClick={() => window.print()}
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[var(--color-primary)] px-5 py-2.5 text-xs sm:text-sm font-medium text-[var(--color-surface)] shadow-xs transition-transform hover:scale-[1.02] active:scale-[0.98]"
+                  className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[var(--color-primary)] px-5 py-2.5 text-xs sm:text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <Download size={15} />
                   <span>Cetak / Simpan PDF</span>
@@ -263,7 +263,7 @@ export default function ResumePage({ onBack }) {
                 <button
                   type="button"
                   onClick={() => onNavigate?.('contact')}
-                  className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-2.5 text-xs sm:text-sm font-medium text-[var(--color-primary)] shadow-xs transition-colors hover:border-[var(--color-primary)]/50"
+                  className="inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-2.5 text-xs sm:text-sm font-medium text-[var(--color-primary)] transition-colors hover:border-[var(--color-primary)]/50"
                 >
                   <span>Hubungi Saya</span>
                   <ArrowRight size={14} />
@@ -277,7 +277,7 @@ export default function ResumePage({ onBack }) {
                 <motion.div
                   key={stat.label}
                   {...inView(i * 0.07)}
-                  className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-4 text-center shadow-xs"
+                  className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-4 text-center"
                 >
                   <div className="text-xl font-bold text-[var(--color-primary)] sm:text-2xl">{stat.value}</div>
                   <div className="mt-1 text-[11px] text-[var(--color-muted)] sm:text-xs">{stat.label}</div>
@@ -301,7 +301,7 @@ export default function ResumePage({ onBack }) {
                   className="relative pl-9"
                 >
                   <div className="absolute left-[7px] top-1.5 size-3 -translate-x-1/2 rounded-full border-2 border-[var(--color-surface)] bg-[var(--color-primary)]" />
-                  <div className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-5 shadow-xs transition-colors hover:border-[var(--color-primary)]/30">
+                  <div className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-5 transition-colors hover:border-[var(--color-primary)]/30">
                     <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
                       <div>
                         <h3 className="text-base font-bold text-[var(--color-primary)]">{exp.role}</h3>
@@ -309,7 +309,7 @@ export default function ResumePage({ onBack }) {
                           {exp.organization} • {exp.location}
                         </p>
                       </div>
-                      <span className="inline-flex w-fit items-center gap-1 rounded-lg bg-[var(--color-surface)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-muted)] shadow-xs">
+                      <span className="inline-flex w-fit items-center gap-1 rounded-lg bg-[var(--color-surface)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-muted)]">
                         <Calendar size={12} />
                         {exp.period}
                       </span>
@@ -345,14 +345,14 @@ export default function ResumePage({ onBack }) {
                 <motion.div
                   key={edu.degree}
                   {...inView(i * 0.07)}
-                  className="flex flex-col justify-between gap-3 rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-5 shadow-xs sm:flex-row sm:items-center"
+                  className="flex flex-col justify-between gap-3 rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-5 sm:flex-row sm:items-center"
                 >
                   <div>
                     <h3 className="text-base font-bold text-[var(--color-primary)]">{edu.degree}</h3>
                     <p className="text-xs font-semibold text-[var(--color-primary)] mt-0.5">{edu.institution}</p>
                     <p className="mt-2 text-xs text-[var(--color-muted)]">{edu.notes}</p>
                   </div>
-                  <span className="inline-flex w-fit shrink-0 items-center gap-1 rounded-lg bg-[var(--color-surface)] px-2.5 py-1 text-xs font-medium text-[var(--color-muted)] shadow-xs">
+                  <span className="inline-flex w-fit shrink-0 items-center gap-1 rounded-lg bg-[var(--color-surface)] px-2.5 py-1 text-xs font-medium text-[var(--color-muted)]">
                     <Calendar size={12} />
                     {edu.period}
                   </span>
@@ -375,10 +375,10 @@ export default function ResumePage({ onBack }) {
                   <motion.div
                     key={cat.title}
                     {...inView(i * 0.1)}
-                    className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-5 shadow-xs"
+                    className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-5"
                   >
                     <div className="flex items-center gap-3 mb-4 pb-4 border-b border-[var(--color-border)]/50">
-                      <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
+                      <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[var(--color-surface)] text-[var(--color-primary)]">
                         <Icon size={18} strokeWidth={1.5} />
                       </div>
                       <div>
@@ -412,10 +412,10 @@ export default function ResumePage({ onBack }) {
                 <motion.div
                   key={lang.name}
                   {...inView(i * 0.1)}
-                  className="flex items-center justify-between rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-4 shadow-xs"
+                  className="flex items-center justify-between rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-4"
                 >
                   <span className="font-semibold text-sm text-[var(--color-primary)]">{lang.name}</span>
-                  <span className="rounded-lg bg-[var(--color-surface)] px-2.5 py-1 text-xs font-medium text-[var(--color-muted)] shadow-xs">
+                  <span className="rounded-lg bg-[var(--color-surface)] px-2.5 py-1 text-xs font-medium text-[var(--color-muted)]">
                     {lang.level}
                   </span>
                 </motion.div>

@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import { ArrowLeft, ExternalLink, ArrowUpRight } from 'lucide-react'
 import { githubPath } from '../constants/icons.js'
 
@@ -58,7 +58,7 @@ export default function WorkPage({ onBack }) {
         type="button"
         onClick={onBack}
         {...inView(0)}
-        className="group mb-10 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 shadow-xs"
+        className="group mb-10 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40"
       >
         <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
         Kembali ke Beranda
@@ -76,19 +76,19 @@ export default function WorkPage({ onBack }) {
       {featured && (
         <motion.div
           {...inView(0.1)}
-          className="group relative mb-8 overflow-hidden rounded-3xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/20 hover:shadow-lg"
+          className="group relative mb-8 overflow-hidden rounded-3xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] transition-all duration-300 hover:border-[var(--color-primary)]/20"
         >
           <div className="dot-pattern absolute inset-0 opacity-40" />
           <div className="relative flex flex-col gap-8 p-8 sm:flex-row sm:items-end sm:justify-between">
             <div className="flex-1">
-              <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-[11px] font-semibold text-[var(--color-primary)] shadow-xs">
+              <span className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-3 py-1 text-[11px] font-semibold text-[var(--color-primary)]">
                 Featured Project
               </span>
               <h2 className="text-2xl font-bold text-[var(--color-primary)] sm:text-3xl">{featured.title}</h2>
               <p className="mt-2 max-w-lg text-sm leading-relaxed text-[var(--color-muted)]">{featured.desc}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {featured.stack.map((s) => (
-                  <span key={s} className="rounded-lg border border-[var(--color-border)]/60 bg-[var(--color-surface)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-primary)] shadow-xs">
+                  <span key={s} className="rounded-lg border border-[var(--color-border)]/60 bg-[var(--color-surface)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-primary)]">
                     {s}
                   </span>
                 ))}
@@ -123,14 +123,14 @@ export default function WorkPage({ onBack }) {
           <motion.div
             key={proj.title}
             {...inView(i * 0.1)}
-            className="group flex flex-col justify-between rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-6 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/20 hover:shadow-md"
+            className="group flex flex-col justify-between rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-6 transition-all duration-300 hover:border-[var(--color-primary)]/20"
           >
             <div>
               <div className="mb-4 flex items-start justify-between">
                 <span className="text-4xl font-bold text-[var(--color-border)] leading-none select-none">
                   {String(i + 2).padStart(2, '0')}
                 </span>
-                <span className="flex size-8 items-center justify-center rounded-full border border-[var(--color-border)]/60 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 shadow-xs">
+                <span className="flex size-8 items-center justify-center rounded-full border border-[var(--color-border)]/60 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all group-hover:border-[var(--color-primary)] group-hover:text-[var(--color-primary)] group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                   <ArrowUpRight size={14} />
                 </span>
               </div>

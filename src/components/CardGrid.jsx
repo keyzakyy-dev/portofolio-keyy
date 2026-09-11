@@ -22,7 +22,7 @@ function CardPreview({ type }) {
             hover: { rotate: [0, 45, 0], scale: 1.15 },
           }}
           transition={{ duration: 0.5, ease: 'easeInOut' }}
-          className="text-[var(--color-primary)]"
+          className="text-[var(--color-muted)]"
         >
           <Wrench size={64} strokeWidth={1.5} />
         </motion.div>
@@ -38,7 +38,7 @@ function CardPreview({ type }) {
             hover: { y: [-4, 6, -4], scale: 1.12 },
           }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
-          className="text-[var(--color-primary)]"
+          className="text-[var(--color-muted)]"
         >
           <FileBadge size={64} strokeWidth={1.5} />
         </motion.div>
@@ -54,7 +54,7 @@ function CardPreview({ type }) {
             hover: { scale: [1, 1.2, 1.1], rotate: [0, -10, 0] },
           }}
           transition={{ duration: 0.4, ease: 'easeInOut' }}
-          className="text-[var(--color-primary)]"
+          className="text-[var(--color-muted)]"
         >
           <FolderGit2 size={64} strokeWidth={1.5} />
         </motion.div>
@@ -69,7 +69,7 @@ function CardPreview({ type }) {
           hover: { x: [0, 8, -2, 0], y: [0, -8, 2, 0], scale: 1.15 },
         }}
         transition={{ duration: 0.4, ease: 'easeInOut' }}
-        className="text-[var(--color-primary)]"
+        className="text-[var(--color-muted)]"
       >
         <Send size={64} strokeWidth={1.5} />
       </motion.div>
@@ -106,7 +106,7 @@ export default function CardGrid({ onNavigate }) {
               className="group flex h-full w-[75vw] max-w-[280px] cursor-pointer flex-col justify-between overflow-hidden rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] text-left transition-all duration-300 sm:w-[calc(50vw-3rem)] sm:rounded-3xl lg:w-full lg:max-w-none"
             >
               <div className="flex flex-col items-center justify-center px-4 pt-4 sm:px-5 sm:pt-5">
-                <span className="text-lg font-medium tracking-tight text-[var(--color-primary)]">
+                <span className="text-lg font-medium tracking-tight text-[var(--color-muted)]">
                   {card.label}.
                 </span>
               </div>

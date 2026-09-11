@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+﻿import { motion } from 'framer-motion'
 import {
   ArrowLeft,
   Code2,
@@ -59,7 +59,7 @@ export default function ServicesPage({ onBack }) {
         type="button"
         onClick={onBack}
         {...inView(0)}
-        className="group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)] shadow-xs"
+        className="group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)]"
       >
         <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
         <span>Kembali ke Beranda</span>
@@ -84,11 +84,11 @@ export default function ServicesPage({ onBack }) {
         {/* Tile 1: Jasa Pembuatan Website (Span 2) */}
         <motion.div
           {...inView(0)}
-          className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg md:col-span-2"
+          className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 transition-all duration-300 hover:border-[var(--color-primary)]/30 md:col-span-2"
         >
           <div>
             <div className="flex items-center justify-between">
-              <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
+              <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)]">
                 <Code2 size={24} strokeWidth={1.5} />
               </div>
               <span className="rounded-full bg-[var(--color-primary)]/10 px-3 py-1 text-[11px] font-semibold text-[var(--color-primary)]">
@@ -107,7 +107,7 @@ export default function ServicesPage({ onBack }) {
               {['Landing Page', 'Company Profile', 'Web Portofolio', 'React & Tailwind', 'Fast Load'].map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-lg border border-[var(--color-border)]/60 bg-[var(--color-surface)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-primary)] shadow-xs"
+                  className="rounded-lg border border-[var(--color-border)]/60 bg-[var(--color-surface)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-primary)]"
                 >
                   {tag}
                 </span>
@@ -134,10 +134,10 @@ export default function ServicesPage({ onBack }) {
         {/* Tile 2: Editing Video (Span 1) */}
         <motion.div
           {...inView(0.07)}
-          className="group flex flex-col justify-between rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg"
+          className="group flex flex-col justify-between rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 transition-all duration-300 hover:border-[var(--color-primary)]/30"
         >
           <div>
-            <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
+            <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)]">
               <Video size={24} strokeWidth={1.5} />
             </div>
 
@@ -162,10 +162,10 @@ export default function ServicesPage({ onBack }) {
         {/* Tile 3: Desain Logo (Span 1) */}
         <motion.div
           {...inView(0.14)}
-          className="group flex flex-col justify-between rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg"
+          className="group flex flex-col justify-between rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 transition-all duration-300 hover:border-[var(--color-primary)]/30"
         >
           <div>
-            <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
+            <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)]">
               <PenTool size={24} strokeWidth={1.5} />
             </div>
 
@@ -190,17 +190,13 @@ export default function ServicesPage({ onBack }) {
         {/* Tile 4: Desain Poster & Grafis (Span 2) */}
         <motion.div
           {...inView(0.07)}
-          className="group flex flex-col justify-between rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 shadow-xs transition-all duration-300 hover:border-[var(--color-primary)]/30 hover:shadow-lg md:col-span-2"
+          className="group flex flex-col justify-between rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 transition-all duration-300 hover:border-[var(--color-primary)]/30 md:col-span-2"
         >
           <div>
-            <div className="flex items-center justify-between">
-              <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
+            <div className="flex items-center">
+              <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)]">
                 <ImageIcon size={24} strokeWidth={1.5} />
               </div>
-              <span className="flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                Siap Cetak & Digital
-              </span>
             </div>
 
             <h2 className="mt-5 text-2xl font-bold text-[var(--color-primary)]">
@@ -248,14 +244,14 @@ export default function ServicesPage({ onBack }) {
               <motion.div
                 key={proc.step}
                 {...inView(i * 0.1)}
-                className="relative flex flex-col justify-between rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-6 shadow-xs"
+                className="relative flex flex-col justify-between rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-6"
               >
                 <div>
                   <div className="flex items-center justify-between mb-4">
                     <span className="font-mono text-2xl font-bold text-[var(--color-primary)]/30">
                       {proc.step}
                     </span>
-                    <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
+                    <div className="flex size-9 items-center justify-center rounded-xl bg-[var(--color-surface)] text-[var(--color-primary)]">
                       <Icon size={18} strokeWidth={1.5} />
                     </div>
                   </div>

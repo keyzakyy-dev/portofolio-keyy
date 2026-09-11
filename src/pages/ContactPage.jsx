@@ -1,4 +1,4 @@
-import { useState } from 'react'
+﻿import { useState } from 'react'
 import { motion } from 'framer-motion'
 import {
   ArrowLeft,
@@ -63,7 +63,7 @@ export default function ContactPage({ onBack }) {
         type="button"
         onClick={onBack}
         {...inView(0)}
-        className="group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)] shadow-xs"
+        className="group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)]"
       >
         <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
         <span>Kembali ke Beranda</span>
@@ -84,7 +84,7 @@ export default function ContactPage({ onBack }) {
 
         {/* Left Column: Interactive Form (7 Cols) */}
         <motion.div {...inView(0.1)} className="lg:col-span-7">
-          <div className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6 sm:p-8 shadow-xs">
+          <div className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6 sm:p-8">
             {sent ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
@@ -106,7 +106,7 @@ export default function ContactPage({ onBack }) {
                   <button
                     type="button"
                     onClick={handleWhatsAppSend}
-                    className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-medium text-white shadow-xs hover:bg-emerald-700 transition-colors"
+                    className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-medium text-white hover:bg-emerald-700 transition-colors"
                   >
                     <MessageCircle size={14} />
                     <span>Lanjutkan ke WhatsApp</span>
@@ -136,7 +136,7 @@ export default function ContactPage({ onBack }) {
                         onClick={() => setSelectedService(srv)}
                         className={`cursor-pointer rounded-xl px-3 py-1.5 text-xs font-medium transition-all ${
                           selectedService === srv
-                            ? 'bg-[var(--color-primary)] text-[var(--color-surface)] shadow-xs'
+                            ? 'bg-[var(--color-primary)] text-[var(--color-surface)]'
                             : 'border border-[var(--color-border)]/70 bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-[var(--color-primary)]/40 hover:text-[var(--color-primary)]'
                         }`}
                       >
@@ -216,7 +216,7 @@ export default function ContactPage({ onBack }) {
                 <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between pt-2">
                   <button
                     type="submit"
-                    className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.02] active:scale-[0.98] shadow-sm"
+                    className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.02] active:scale-[0.98]"
                   >
                     <Send size={15} />
                     <span>Kirim Pesan</span>
@@ -242,7 +242,7 @@ export default function ContactPage({ onBack }) {
           {/* WhatsApp Direct Card */}
           <motion.div
             {...inView(0.15)}
-            className="rounded-3xl border border-emerald-500/30 bg-emerald-500/5 p-6 shadow-xs"
+            className="rounded-3xl border border-emerald-500/30 bg-emerald-500/5 p-6"
           >
             <div className="flex items-center justify-between">
               <div className="flex size-11 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-600 dark:text-emerald-400">
@@ -273,10 +273,10 @@ export default function ContactPage({ onBack }) {
           {/* Email Direct Card */}
           <motion.div
             {...inView(0.2)}
-            className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6 shadow-xs"
+            className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6"
           >
             <div className="flex items-center justify-between">
-              <div className="flex size-11 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
+              <div className="flex size-11 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)]">
                 <Mail size={20} />
               </div>
               <a
@@ -315,7 +315,7 @@ export default function ContactPage({ onBack }) {
           {/* Social Profiles */}
           <motion.div
             {...inView(0.3)}
-            className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-5 shadow-xs"
+            className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-5"
           >
             <h4 className="text-xs font-semibold text-[var(--color-primary)] mb-3">Tautan Media Sosial</h4>
             <div className="flex items-center gap-2">
@@ -324,7 +324,7 @@ export default function ContactPage({ onBack }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
-                className="flex size-10 items-center justify-center rounded-xl border border-[var(--color-border)]/70 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] shadow-xs"
+                className="flex size-10 items-center justify-center rounded-xl border border-[var(--color-border)]/70 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="size-4.5">
                   <path d={githubPath} />
@@ -336,7 +336,7 @@ export default function ContactPage({ onBack }) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className="flex size-10 items-center justify-center rounded-xl border border-[var(--color-border)]/70 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] shadow-xs"
+                className="flex size-10 items-center justify-center rounded-xl border border-[var(--color-border)]/70 bg-[var(--color-surface)] text-[var(--color-muted)] transition-all hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]"
               >
                 <svg viewBox="0 0 24 24" fill="currentColor" className="size-4.5">
                   <path d={instagramPath} />

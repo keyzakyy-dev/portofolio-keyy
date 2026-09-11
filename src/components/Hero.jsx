@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion'
+﻿import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useMemo, useId } from 'react'
 import { ArrowUpRight, User } from 'lucide-react'
 
@@ -219,16 +219,16 @@ export default function Hero({ onNavigate }) {
           <div className="relative size-56 sm:size-64 md:size-72">
             <div className="dot-pattern absolute inset-0 rounded-3xl opacity-60" />
             <motion.div
-              animate={{ opacity: [0.06, 0.15, 0.06] }}
+              animate={{ opacity: [0.12, 0.35, 0.12] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute inset-0 -z-10 rounded-3xl blur-xl"
-              style={{ background: 'var(--color-primary)', transform: 'scale(1.07)' }}
+              className="absolute inset-4 rounded-3xl blur-3xl"
+              style={{ background: 'var(--color-primary)' }}
             />
-            <div className="relative flex size-full items-center justify-center overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] shadow-sm">
+            <div className="relative flex size-full items-center justify-center overflow-hidden rounded-3xl border border-[var(--color-border)] bg-[var(--color-surface-alt)]">
               <img
                 src="/profile.jpg"
                 alt="Foto profil keyzakyy"
-                className="size-full object-cover"
+                className="relative size-full object-cover"
                 onError={(e) => { e.currentTarget.style.display = 'none'; e.currentTarget.nextElementSibling.style.display = 'flex' }}
               />
               <div className="hidden size-full items-center justify-center text-[var(--color-muted)]">
