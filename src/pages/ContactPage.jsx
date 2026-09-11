@@ -5,13 +5,10 @@ import {
   Send,
   Mail,
   Phone,
-  MapPin,
   CheckCircle2,
-  Clock,
   MessageCircle,
   Copy,
   ExternalLink,
-  Sparkles,
 } from 'lucide-react'
 import { githubPath, instagramPath } from '../constants/icons.js'
 
@@ -315,30 +312,6 @@ export default function ContactPage({ onBack }) {
             </div>
           </motion.div>
 
-          {/* Location & Response Time */}
-          <motion.div
-            {...inView(0.25)}
-            className="grid grid-cols-2 gap-3"
-          >
-            <div className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-4 shadow-xs">
-              <div className="flex items-center gap-1.5 text-xs text-[var(--color-muted)] mb-1">
-                <MapPin size={13} className="text-[var(--color-primary)]" />
-                <span>Domisili</span>
-              </div>
-              <p className="text-xs font-semibold text-[var(--color-primary)]">Garut, Jawa Barat</p>
-              <p className="text-[10px] text-[var(--color-muted)]">Indonesia</p>
-            </div>
-
-            <div className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-4 shadow-xs">
-              <div className="flex items-center gap-1.5 text-xs text-[var(--color-muted)] mb-1">
-                <Clock size={13} className="text-[var(--color-primary)]" />
-                <span>Zona Waktu</span>
-              </div>
-              <p className="text-xs font-semibold text-[var(--color-primary)]">WIB (GMT+7)</p>
-              <p className="text-[10px] text-[var(--color-muted)]">Balasan &lt; 24 Jam</p>
-            </div>
-          </motion.div>
-
           {/* Social Profiles */}
           <motion.div
             {...inView(0.3)}
@@ -374,35 +347,6 @@ export default function ContactPage({ onBack }) {
 
         </div>
       </div>
-
-      {/* Mini FAQ Section */}
-      <motion.div {...inView(0)} className="mt-16 rounded-3xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-6 sm:p-9 shadow-xs">
-        <div className="mb-6 flex items-center gap-2">
-          <Sparkles size={18} className="text-amber-500" />
-          <h3 className="text-lg font-bold text-[var(--color-primary)]">Pertanyaan yang Sering Diajukan</h3>
-        </div>
-
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
-          <div>
-            <h4 className="text-xs font-bold text-[var(--color-primary)]">Berapa lama estimasi pengerjaan?</h4>
-            <p className="mt-1 text-xs text-[var(--color-muted)] leading-relaxed">
-              Bergantung pada skala proyek: website sederhana 3–7 hari kerja, video editing 1–3 hari, dan desain logo 2–5 hari.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-xs font-bold text-[var(--color-primary)]">Apakah ada jaminan revisi?</h4>
-            <p className="mt-1 text-xs text-[var(--color-muted)] leading-relaxed">
-              Ya, setiap proyek mencakup sesi revisi minor gratis untuk memastikan hasil akhir sesuai dengan ekspektasi Anda.
-            </p>
-          </div>
-          <div>
-            <h4 className="text-xs font-bold text-[var(--color-primary)]">Bagaimana sistem pembayarannya?</h4>
-            <p className="mt-1 text-xs text-[var(--color-muted)] leading-relaxed">
-              Umumnya menggunakan DP (Down Payment) 50% di awal dan pelunasan setelah proyek selesai diuji dan siap serah terima.
-            </p>
-          </div>
-        </div>
-      </motion.div>
     </motion.div>
   )
 }

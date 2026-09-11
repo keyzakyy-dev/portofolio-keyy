@@ -6,7 +6,6 @@ import {
   PenTool,
   Image as ImageIcon,
   CheckCircle2,
-  ArrowRight,
   Search,
   Layers,
   Rocket,
@@ -46,7 +45,7 @@ const inView = (delay = 0) => ({
   transition: { delay, type: 'spring', stiffness: 200, damping: 20 },
 })
 
-export default function ServicesPage({ onBack, onNavigate }) {
+export default function ServicesPage({ onBack }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -270,41 +269,6 @@ export default function ServicesPage({ onBack, onNavigate }) {
           })}
         </div>
       </div>
-
-      {/* Bottom CTA Banner */}
-      <motion.div
-        {...inView(0)}
-        className="relative mt-20 overflow-hidden rounded-3xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] shadow-sm"
-      >
-        <div className="dot-pattern absolute inset-0 opacity-50" />
-        <div className="relative flex flex-col items-center gap-8 px-8 py-14 text-center sm:px-16 lg:flex-row lg:text-left lg:justify-between lg:items-center">
-          <div className="flex-1">
-            <h2 className="text-3xl font-bold text-[var(--color-primary)] sm:text-4xl lg:text-5xl">
-              Punya Proyek yang<br className="hidden sm:block" /> Ingin Dikerjakan?
-            </h2>
-            <p className="mx-auto mt-3 max-w-lg text-sm text-[var(--color-muted)] sm:text-base lg:mx-0">
-              Diskusikan kebutuhan website, video editing, pembuatan logo, atau desain grafis Anda sekarang.
-            </p>
-          </div>
-          <div className="flex shrink-0 flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-            <button
-              type="button"
-              onClick={() => onNavigate?.('contact')}
-              className="group inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-[var(--color-primary)] px-7 py-3.5 text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.03] active:scale-[0.98] shadow-md"
-            >
-              <span>Hubungi Saya</span>
-              <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-            </button>
-            <button
-              type="button"
-              onClick={() => onNavigate?.('work')}
-              className="inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-7 py-3.5 text-sm font-medium text-[var(--color-primary)] transition-colors hover:border-[var(--color-primary)] active:scale-[0.98]"
-            >
-              Lihat Portofolio
-            </button>
-          </div>
-        </div>
-      </motion.div>
     </motion.div>
   )
 }

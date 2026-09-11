@@ -180,7 +180,7 @@ function TableOfContents({ active }) {
   )
 }
 
-export default function ResumePage({ onBack, onNavigate }) {
+export default function ResumePage({ onBack }) {
   const [activeSection, setActiveSection] = useState('profile')
 
   useEffect(() => {
@@ -226,19 +226,9 @@ export default function ResumePage({ onBack, onNavigate }) {
             <motion.div {...inView(0.05)} className="rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-6 sm:p-9 shadow-xs">
               <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:justify-between">
                 <div className="flex-1">
-                  <div className="flex flex-wrap items-center gap-2.5 mb-3">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-3 py-1 text-xs font-medium text-emerald-600 dark:text-emerald-400">
-                      <span className="size-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                      Terbuka untuk Peluang Kerja & Freelance
-                    </span>
-                  </div>
-
                   <h1 className="text-3xl font-bold tracking-tight text-[var(--color-primary)] sm:text-4xl uppercase">
                     Sayyid Dzaky Farhan
                   </h1>
-                  <p className="mt-1 text-sm font-medium text-[var(--color-muted)] sm:text-base">
-                    Mahasiswa S1 Teknik Informatika • Data Entry & Spatial Processing • Web & Creative Creator
-                  </p>
 
                   <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2 text-xs text-[var(--color-muted)]">
                     <span className="inline-flex items-center gap-1.5">
@@ -385,24 +375,25 @@ export default function ResumePage({ onBack, onNavigate }) {
                   <motion.div
                     key={cat.title}
                     {...inView(i * 0.1)}
-                    className="flex flex-col justify-between rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-5 shadow-xs"
+                    className="rounded-2xl border border-[var(--color-border)]/60 bg-[var(--color-surface-alt)] p-5 shadow-xs"
                   >
-                    <div>
-                      <div className="mb-3 flex size-10 items-center justify-center rounded-xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
-                        <Icon size={20} strokeWidth={1.5} />
+                    <div className="flex items-center gap-3 mb-4 pb-4 border-b border-[var(--color-border)]/50">
+                      <div className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-[var(--color-surface)] text-[var(--color-primary)] shadow-xs">
+                        <Icon size={18} strokeWidth={1.5} />
                       </div>
-                      <h3 className="text-sm font-bold text-[var(--color-primary)] mb-3">{cat.title}</h3>
-                      <div className="flex flex-wrap gap-1.5">
-                        {cat.skills.map((s) => (
-                          <span
-                            key={s}
-                            className="rounded-lg border border-[var(--color-border)]/60 bg-[var(--color-surface)] px-2.5 py-1 text-[11px] font-medium text-[var(--color-primary)] shadow-xs"
-                          >
-                            {s}
-                          </span>
-                        ))}
+                      <div>
+                        <span className="text-[10px] font-mono text-[var(--color-muted)]">{String(i + 1).padStart(2, '0')}</span>
+                        <h3 className="text-xs font-bold text-[var(--color-primary)] leading-tight">{cat.title}</h3>
                       </div>
                     </div>
+                    <ul className="space-y-2">
+                      {cat.skills.map((s) => (
+                        <li key={s} className="flex items-center gap-2 text-xs text-[var(--color-primary)]">
+                          <CheckCircle2 size={13} className="shrink-0 text-emerald-500" />
+                          <span>{s}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </motion.div>
                 )
               })}
@@ -432,28 +423,6 @@ export default function ResumePage({ onBack, onNavigate }) {
             </div>
           </section>
 
-          {/* Bottom Collaboration Banner */}
-          <motion.div
-            {...inView(0)}
-            className="mt-16 rounded-3xl border border-[var(--color-border)]/80 bg-[var(--color-surface-alt)] p-7 text-center sm:p-10 shadow-xs"
-          >
-            <h3 className="text-2xl font-bold text-[var(--color-primary)] sm:text-3xl">
-              Mari Bekerja Sama
-            </h3>
-            <p className="mx-auto mt-2 max-w-md text-xs sm:text-sm text-[var(--color-muted)]">
-              Tertarik dengan kualifikasi saya untuk data processing, survei sensus, web dev, atau visual design?
-            </p>
-            <div className="mt-5 flex justify-center">
-              <button
-                type="button"
-                onClick={() => onNavigate?.('contact')}
-                className="inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[var(--color-primary)] px-6 py-3 text-xs sm:text-sm font-medium text-[var(--color-surface)] transition-transform hover:scale-[1.03] active:scale-[0.98] shadow-md"
-              >
-                <span>Hubungi Saya</span>
-                <ArrowRight size={15} />
-              </button>
-            </div>
-          </motion.div>
         </div>
       </div>
     </motion.div>
