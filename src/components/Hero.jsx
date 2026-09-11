@@ -168,8 +168,7 @@ export default function Hero({ onNavigate }) {
           {/* Sub-heading */}
           <MotionEffect delay={0.3}>
             <p className="mt-5 max-w-xl px-2 text-sm text-[var(--color-muted)] sm:mt-6 sm:px-0 sm:text-lg">
-              Frontend developer yang fokus pada antarmuka modern, animasi halus, dan
-              pengalaman pengguna yang cepat.
+              Frontend developer & digital creative yang mengerjakan website modern, video editing, desain logo, dan grafis digital.
             </p>
           </MotionEffect>
 

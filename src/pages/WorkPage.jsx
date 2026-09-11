@@ -58,7 +58,7 @@ export default function WorkPage({ onBack }) {
         type="button"
         onClick={onBack}
         {...inView(0)}
-        className="group mb-10 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40"
+        className="group mb-10 inline-flex cursor-pointer items-center gap-2 rounded-xl bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40"
       >
         <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
         Kembali ke Beranda
