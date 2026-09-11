@@ -4,6 +4,7 @@ import Header, { CONTENT_VARIANTS } from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import CardGrid from './components/CardGrid.jsx'
 import Footer from './components/Footer.jsx'
+import CounterStats from './components/CounterStats.jsx'
 
 const ServicesPage = lazy(() => import('./pages/ServicesPage.jsx'))
 const ResumePage = lazy(() => import('./pages/ResumePage.jsx'))
@@ -49,6 +50,7 @@ export default function App() {
             >
               <div className="mx-auto max-w-6xl px-5" style={{ paddingTop: 68 }}>
                 <Hero onNavigate={navigate} />
+                <CounterStats />
                 <CardGrid onNavigate={navigate} />
               </div>
               <Footer />

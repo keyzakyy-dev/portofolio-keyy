@@ -11,14 +11,14 @@ const socialLinks = [
 export default function Footer() {
   return (
     <footer className="bg-[var(--color-surface)] pt-3 pb-7">
-      <motion.div
-        initial={{ opacity: 0, y: 100, scale: 0.5 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 1.3 }}
-        className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-5 text-center"
-      >
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-5 text-center">
         {/* Social icons */}
-        <div className="flex items-center gap-1">
+        <motion.div
+          initial={{ opacity: 0, y: 100, scale: 0.5 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 1.9 }}
+          className="flex items-center gap-1"
+        >
           {socialLinks.map((social) => (
             <a
               key={social.label}
@@ -33,9 +33,14 @@ export default function Footer() {
               </svg>
             </a>
           ))}
-        </div>
+        </motion.div>
 
-        <p className="flex flex-wrap items-center justify-center gap-x-1 text-xs text-[var(--color-muted)] sm:text-sm">
+        <motion.p
+          initial={{ opacity: 0, y: 100, scale: 0.5 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 2.0 }}
+          className="flex flex-wrap items-center justify-center gap-x-1 text-xs text-[var(--color-muted)] sm:text-sm"
+        >
           <span>Built by</span>
           <a
             href="#"
@@ -56,8 +61,8 @@ export default function Footer() {
             <span>GitHub</span>
           </a>
           <span>.</span>
-        </p>
-      </motion.div>
+        </motion.p>
+      </div>
     </footer>
   )
 }

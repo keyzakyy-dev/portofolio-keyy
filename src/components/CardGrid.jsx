@@ -95,7 +95,7 @@ export default function CardGrid({ onNavigate }) {
     <section className="pb-6 sm:pb-8">
       <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:grid lg:grid-cols-4 lg:overflow-visible lg:px-0 lg:pb-0">
         {cards.map((card, index) => (
-          <MotionEffect key={card.label} delay={0.9 + index * 0.1} className="snap-center shrink-0 lg:shrink lg:h-full">
+          <MotionEffect key={card.label} delay={1.4 + index * 0.1} className="snap-center shrink-0 lg:shrink lg:h-full">
             <motion.button
               type="button"
               onClick={() => onNavigate?.(card.preview)}

@@ -141,7 +141,7 @@ export default function Hero({ onNavigate }) {
   }, [revealDuration])
 
   return (
-    <section className="flex flex-col items-center pt-6 pb-10 text-center sm:pt-8 sm:pb-12 md:pt-12 md:pb-16">
+    <section className="flex flex-col items-center pt-4 pb-6 text-center sm:pt-6 sm:pb-8 md:pt-8 md:pb-10">
 
       {/* Top: heading + foto — 2 kolom di desktop */}
       <div className="flex w-full max-w-5xl flex-col items-center gap-8 md:flex-row md:items-center md:justify-between md:gap-12 md:text-left">
@@ -206,7 +206,7 @@ export default function Hero({ onNavigate }) {
               <button
                 type="button"
                 onClick={() => onNavigate?.('work')}
-                className="inline-flex w-full cursor-pointer items-center justify-center rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-6 py-3 text-sm font-medium text-[var(--color-primary)] transition-transform hover:scale-[1.03] active:scale-[0.98] sm:w-auto"
+                className="inline-flex w-full cursor-pointer items-center justify-center rounded-xl bg-[var(--color-surface-alt)] px-6 py-3 text-sm font-medium text-[var(--color-primary)] transition-transform hover:scale-[1.03] active:scale-[0.98] sm:w-auto"
               >
                 View Work
               </button>
@@ -240,7 +240,7 @@ export default function Hero({ onNavigate }) {
       </div>
 
       {/* Tech stack row — tetap di tengah */}
-      <div className="tech-row mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 px-4 sm:mt-12 sm:gap-x-6">
+      <div className="tech-row mt-6 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 px-4 sm:mt-8 sm:gap-x-6">
         {techStack.map((tech, index) => (
           <MotionEffect key={tech.label} delay={0.75 + index * 0.07}>
             <svg
