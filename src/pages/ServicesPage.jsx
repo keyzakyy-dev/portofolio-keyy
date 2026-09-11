@@ -87,13 +87,8 @@ export default function ServicesPage({ onBack }) {
           className="group relative flex flex-col justify-between overflow-hidden rounded-3xl border border-[var(--color-border)]/70 bg-[var(--color-surface-alt)] p-7 transition-all duration-300 hover:border-[var(--color-primary)]/30 md:col-span-2"
         >
           <div>
-            <div className="flex items-center justify-between">
-              <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)]">
-                <Code2 size={24} strokeWidth={1.5} />
-              </div>
-              <span className="rounded-full bg-[var(--color-primary)]/10 px-3 py-1 text-[11px] font-semibold text-[var(--color-primary)]">
-                Layanan Utama
-              </span>
+            <div className="flex size-12 items-center justify-center rounded-2xl bg-[var(--color-surface)] text-[var(--color-primary)]">
+              <Code2 size={24} strokeWidth={1.5} />
             </div>
 
             <h2 className="mt-5 text-2xl font-bold text-[var(--color-primary)]">
