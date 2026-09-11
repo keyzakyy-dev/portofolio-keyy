@@ -1,19 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ThemeToggler } from './ThemeToggler.jsx'
-
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(() =>
-    typeof window !== 'undefined' ? window.innerWidth < 768 : false
-  )
-  useEffect(() => {
-    const mq = window.matchMedia('(max-width: 767px)')
-    const onChange = (e) => setIsMobile(e.matches)
-    mq.addEventListener('change', onChange)
-    return () => mq.removeEventListener('change', onChange)
-  }, [])
-  return isMobile
-}
+import { useIsMobile } from '../hooks/useIsMobile.js'
 
 const navbarLogo = (
   <span className="text-2xl font-bold tracking-tight leading-none">
