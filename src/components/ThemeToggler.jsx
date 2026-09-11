@@ -35,7 +35,6 @@ export function ThemeToggler({ dark, setDark, className = '' }) {
       return
     }
 
-    // LTR saat ke dark (kiri ke kanan), RTL saat ke light (kanan ke kiri)
     const clipPath = goingDark
       ? ['polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)', 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)']
       : ['polygon(100% 0%, 100% 0%, 100% 100%, 100% 100%)', 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)']
@@ -77,9 +76,19 @@ export function ThemeToggler({ dark, setDark, className = '' }) {
       type="button"
       onClick={toggleTheme}
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-      className={`flex h-8 w-8 cursor-pointer items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface-alt)] text-[var(--color-muted)] transition-colors hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] ${className}`}
+      className={`group relative h-8 w-[60px] cursor-pointer rounded-full border border-[var(--color-border)] bg-[var(--color-surface-alt)] p-[3px] transition-colors duration-300 hover:border-[var(--color-muted)] ${className}`}
     >
-      {dark ? <Sun size={15} /> : <Moon size={15} />}
+      <span
+        className={`absolute top-[3px] flex size-[26px] items-center justify-center rounded-full bg-[var(--color-primary)] text-[var(--color-surface)] shadow-sm transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] ${
+          dark ? 'left-[calc(100%-29px)]' : 'left-[3px]'
+        }`}
+      >
+        {dark ? (
+          <Sun size={14} strokeWidth={2} className="transition-transform duration-300 group-hover:rotate-90" />
+        ) : (
+          <Moon size={14} strokeWidth={2} className="transition-transform duration-300 group-hover:-rotate-12" />
+        )}
+      </span>
     </button>
   )
 }
