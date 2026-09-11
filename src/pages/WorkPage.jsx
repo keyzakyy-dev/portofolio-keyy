@@ -66,7 +66,7 @@ export default function WorkPage({ onBack }) {
 
       <motion.div {...inView(0.05)} className="mb-12">
         <h1 className="font-script text-4xl font-bold text-[var(--color-primary)] sm:text-6xl">
-          Work <span className="font-sans text-2xl sm:text-3xl font-light text-[var(--color-muted)]">— Proyek Pilihan</span>
+          Work
         </h1>
         <p className="mt-3 max-w-xl text-sm text-[var(--color-muted)] sm:text-base">
           Koleksi proyek yang mencerminkan keahlian dalam membangun produk digital.

@@ -40,7 +40,7 @@ export default function ContactPage({ onBack }) {
 
   const handleWhatsAppSend = () => {
     const text = `Halo Sayyid Dzaky, saya ${form.name || 'calon klien'}.\nEmail: ${form.email || '-'}\nNo HP: ${form.phone || '-'}\nLayanan: ${selectedService}\nPesan: ${form.message || 'Bisa diskusi lebih lanjut?'}`
-    const url = `https://wa.me/6285172167271?text=${encodeURIComponent(text)}`
+    const url = `https://wa.me/6285166664226?text=${encodeURIComponent(text)}`
     window.open(url, '_blank')
   }
 
@@ -72,7 +72,7 @@ export default function ContactPage({ onBack }) {
       {/* Header Section */}
       <motion.div {...inView(0.05)} className="mb-12">
         <h1 className="font-script text-4xl font-bold tracking-tight text-[var(--color-primary)] sm:text-6xl">
-          Get in Touch <span className="font-sans text-2xl sm:text-3xl font-light text-[var(--color-muted)]">— Mari Diskusi</span>
+          Get in Touch
         </h1>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-[var(--color-muted)] sm:text-base">
           Punya ide website, kebutuhan editing video, desain logo, poster, atau pengolahan data? Kirimkan pesan melalui form atau langsung chat via WhatsApp.
@@ -257,10 +257,10 @@ export default function ContactPage({ onBack }) {
               Konsultasi langsung dengan Sayyid Dzaky Farhan.
             </p>
             <p className="mt-2 text-sm font-semibold text-[var(--color-primary)]">
-              0851 7216 7271
+              0851 6666 4226
             </p>
             <a
-              href="https://wa.me/6285172167271"
+              href="https://wa.me/6285166664226"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-flex items-center gap-1.5 rounded-xl bg-emerald-600 px-4 py-2 text-xs font-medium text-white transition-transform hover:scale-[1.02]"
@@ -320,7 +320,7 @@ export default function ContactPage({ onBack }) {
             <h4 className="text-xs font-semibold text-[var(--color-primary)] mb-3">Tautan Media Sosial</h4>
             <div className="flex items-center gap-2">
               <a
-                href="https://github.com/YOUR_USERNAME"
+                href="https://github.com/keyzakyy-dev"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"
@@ -332,7 +332,7 @@ export default function ContactPage({ onBack }) {
               </a>
 
               <a
-                href="https://instagram.com/YOUR_USERNAME"
+                href="https://www.instagram.com/keyzakyy/"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"

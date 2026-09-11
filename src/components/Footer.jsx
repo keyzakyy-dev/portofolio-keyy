@@ -2,10 +2,10 @@ import { motion } from 'framer-motion'
 import { githubPath, youtubePath, instagramPath, facebookPath } from '../constants/icons.js'
 
 const socialLinks = [
-  { path: githubPath, href: 'https://github.com/YOUR_USERNAME', label: 'GitHub' },
-  { path: youtubePath, href: 'https://youtube.com/@YOUR_CHANNEL', label: 'YouTube' },
-  { path: instagramPath, href: 'https://instagram.com/YOUR_USERNAME', label: 'Instagram' },
-  { path: facebookPath, href: 'https://facebook.com/YOUR_USERNAME', label: 'Facebook' },
+  { path: githubPath, href: 'https://github.com/keyzakyy-dev', label: 'GitHub' },
+  { path: youtubePath, href: 'https://www.youtube.com/@YerimMLBB', label: 'YouTube' },
+  { path: instagramPath, href: 'https://www.instagram.com/keyzakyy/', label: 'Instagram' },
+  { path: facebookPath, href: 'https://www.facebook.com/iyokeyza/', label: 'Facebook' },
 ]
 
 export default function Footer() {
@@ -39,16 +39,16 @@ export default function Footer() {
           <span>Built by</span>
           <a
             href="#"
-            className="font-medium transition-colors hover:opacity-70"
+            className="font-medium underline underline-offset-2 transition-colors hover:opacity-70"
           >
             keyzakyy.
           </a>
           <span>The source code is available on</span>
           <a
-            href="https://github.com/YOUR_USERNAME"
+            href="https://github.com/keyzakyy-dev"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-medium transition-colors hover:opacity-70"
+            className="inline-flex items-center gap-1 font-medium underline underline-offset-2 transition-colors hover:opacity-70"
           >
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className="size-3.5 shrink-0">
               <path d={githubPath} />

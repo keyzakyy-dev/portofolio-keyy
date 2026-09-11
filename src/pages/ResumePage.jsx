@@ -204,14 +204,14 @@ export default function ResumePage({ onBack }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
-      className="mx-auto max-w-5xl px-5 pt-24 pb-20"
+      className="mx-auto max-w-5xl px-5 pt-24 pb-20 print:pt-4 print:pb-4 print:max-w-full"
     >
       {/* Back Button */}
       <motion.button
         type="button"
         onClick={onBack}
         {...inView(0)}
-        className="group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)] shadow-xs"
+        className="no-print group mb-8 inline-flex cursor-pointer items-center gap-2 rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-alt)] px-4 py-2 text-sm font-medium text-[var(--color-primary)] transition-all hover:border-[var(--color-primary)]/40 hover:bg-[var(--color-surface)] shadow-xs"
       >
         <ArrowLeft size={16} className="transition-transform group-hover:-translate-x-0.5" />
         <span>Kembali ke Beranda</span>
@@ -235,9 +235,9 @@ export default function ResumePage({ onBack }) {
                       <MapPin size={14} className="text-[var(--color-primary)] shrink-0" />
                       Kp. Sindangsari, Desa Cinunuk, Kec. Wanaraja, Kab. Garut
                     </span>
-                    <a href="tel:085172167271" className="inline-flex items-center gap-1.5 hover:text-[var(--color-primary)] transition-colors">
+                    <a href="tel:085166664226" className="inline-flex items-center gap-1.5 hover:text-[var(--color-primary)] transition-colors">
                       <Phone size={14} className="text-[var(--color-primary)] shrink-0" />
-                      0851 7216 7271
+                      0851 6666 4226
                     </a>
                     <a href="mailto:zakyxne@gmail.com" className="inline-flex items-center gap-1.5 hover:text-[var(--color-primary)] transition-colors">
                       <Mail size={14} className="text-[var(--color-primary)] shrink-0" />
@@ -251,7 +251,7 @@ export default function ResumePage({ onBack }) {
                 </div>
               </div>
 
-              <div className="mt-7 flex flex-wrap gap-3 border-t border-[var(--color-border)]/50 pt-6">
+              <div className="no-print mt-7 flex flex-wrap gap-3 border-t border-[var(--color-border)]/50 pt-6">
                 <button
                   type="button"
                   onClick={() => window.print()}
