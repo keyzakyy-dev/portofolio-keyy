@@ -1,6 +1,6 @@
 import { projects } from '../data/projects.js'
 
-const BASE_URL = 'https://keyzakyy.vercel.app'
+const BASE_URL = 'https://keyy-portofolio.vercel.app'
 
 const BASE_TITLE = 'Sayyid Dzaky Farhan — Frontend Developer & Digital Creative'
 const BASE_DESC =
