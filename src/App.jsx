@@ -5,6 +5,8 @@ import Hero from './components/Hero.jsx'
 import CardGrid from './components/CardGrid.jsx'
 import Footer from './components/Footer.jsx'
 import CounterStats from './components/CounterStats.jsx'
+import { useRoute, navigateTo } from './hooks/useRoute.js'
+import { projects } from './data/projects.js'
 
 const ServicesPage = lazy(() => import('./pages/ServicesPage.jsx'))
 const ResumePage = lazy(() => import('./pages/ResumePage.jsx'))
@@ -13,10 +15,14 @@ const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
 
 const PAGES = { services: ServicesPage, resume: ResumePage, work: WorkPage, contact: ContactPage }
 
+const BASE_TITLE = 'Sayyid Dzaky Farhan — Frontend Developer & Digital Creative'
+const PAGE_TITLES = { services: 'Services', resume: 'Resume', work: 'Work', contact: 'Contact' }
+
 export default function App() {
+  const route = useRoute()
+  const page = route.page
   const [transition, setTransition] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)
-  const [page, setPage] = useState(null)
 
   useEffect(() => {
     const t1 = setTimeout(() => setTransition(true), 1250)
@@ -24,10 +30,22 @@ export default function App() {
     return () => { clearTimeout(t1); clearTimeout(t2) }
   }, [])
 
-  const navigate = (p) => {
-    setPage(p)
+  const navigate = navigateTo
+
+  useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  }, [page, route.projectId])
+
+  useEffect(() => {
+    if (page === 'work' && route.projectId) {
+      const proj = projects.find((p) => p.id === route.projectId)
+      document.title = proj ? `${proj.title} — keyzakyy.` : 'Work — keyzakyy.'
+    } else if (page) {
+      document.title = `${PAGE_TITLES[page]} — keyzakyy.`
+    } else {
+      document.title = BASE_TITLE
+    }
+  }, [page, route.projectId])
 
   const PageComponent = page ? PAGES[page] : null
 
