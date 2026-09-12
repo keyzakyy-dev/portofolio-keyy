@@ -12,8 +12,15 @@ const ServicesPage = lazy(() => import('./pages/ServicesPage.jsx'))
 const ResumePage = lazy(() => import('./pages/ResumePage.jsx'))
 const WorkPage = lazy(() => import('./pages/WorkPage.jsx'))
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage.jsx'))
 
-const PAGES = { services: ServicesPage, resume: ResumePage, work: WorkPage, contact: ContactPage }
+const PAGES = {
+  services: ServicesPage,
+  resume: ResumePage,
+  work: WorkPage,
+  contact: ContactPage,
+  'not-found': NotFoundPage,
+}
 
 export default function App() {
   const route = useRoute()

@@ -50,6 +50,11 @@ export function applyMeta({ page, projectId }) {
       description = PAGE_META.work.description
       path = '/work'
     }
+  } else if (page === 'not-found') {
+    title = '404 — keyzakyy.'
+    description =
+      'Halaman yang kamu cari tidak ditemukan. Kembali ke beranda untuk jelajahi layanan, resume, dan proyek keyzakyy.'
+    path = window.location.pathname || '/'
   } else if (page && PAGE_META[page]) {
     title = `${PAGE_META[page].title} — keyzakyy.`
     description = PAGE_META[page].description
@@ -58,6 +63,11 @@ export function applyMeta({ page, projectId }) {
 
   document.title = title
   setAttr('meta[name="description"]', 'content', description)
+  setAttr(
+    'meta[name="robots"]',
+    'content',
+    page === 'not-found' ? 'noindex, nofollow' : 'index, follow'
+  )
   setAttr('link[rel="canonical"]', 'href', BASE_URL + path)
   setAttr('meta[property="og:title"]', 'content', title)
   setAttr('meta[property="og:description"]', 'content', description)

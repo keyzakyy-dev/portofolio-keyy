@@ -6,7 +6,7 @@ export function parsePath(pathname = window.location.pathname) {
   const path = pathname.replace(/^\/+|\/+$/g, '')
   if (!path) return { page: null, projectId: null }
   const [seg, projectId] = path.split('/')
-  if (!PAGES.includes(seg)) return { page: null, projectId: null }
+  if (!PAGES.includes(seg)) return { page: 'not-found', projectId: null }
   return { page: seg, projectId: projectId || null }
 }
 

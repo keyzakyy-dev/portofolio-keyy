@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import { githubPath } from '../constants/icons.js'
 import { projects } from '../data/projects.js'
+import NotFoundPage from './NotFoundPage.jsx'
 
 const inView = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -306,6 +307,8 @@ export default function WorkPage({ onBack, onNavigate, projectId }) {
             project={selectedProject}
             onBackToProjects={handleBackToProjects}
           />
+        ) : projectId ? (
+          <NotFoundPage backLabel="Kembali ke Daftar Proyek" onBack={handleBackToProjects} />
         ) : (
           <motion.div
             key="project-list"
