@@ -6,7 +6,7 @@ import CardGrid from './components/CardGrid.jsx'
 import Footer from './components/Footer.jsx'
 import CounterStats from './components/CounterStats.jsx'
 import { useRoute, navigateTo } from './hooks/useRoute.js'
-import { projects } from './data/projects.js'
+import { applyMeta } from './lib/seo.js'
 
 const ServicesPage = lazy(() => import('./pages/ServicesPage.jsx'))
 const ResumePage = lazy(() => import('./pages/ResumePage.jsx'))
@@ -14,9 +14,6 @@ const WorkPage = lazy(() => import('./pages/WorkPage.jsx'))
 const ContactPage = lazy(() => import('./pages/ContactPage.jsx'))
 
 const PAGES = { services: ServicesPage, resume: ResumePage, work: WorkPage, contact: ContactPage }
-
-const BASE_TITLE = 'Sayyid Dzaky Farhan — Frontend Developer & Digital Creative'
-const PAGE_TITLES = { services: 'Services', resume: 'Resume', work: 'Work', contact: 'Contact' }
 
 export default function App() {
   const route = useRoute()
@@ -37,15 +34,8 @@ export default function App() {
   }, [page, route.projectId])
 
   useEffect(() => {
-    if (page === 'work' && route.projectId) {
-      const proj = projects.find((p) => p.id === route.projectId)
-      document.title = proj ? `${proj.title} — keyzakyy.` : 'Work — keyzakyy.'
-    } else if (page) {
-      document.title = `${PAGE_TITLES[page]} — keyzakyy.`
-    } else {
-      document.title = BASE_TITLE
-    }
-  }, [page, route.projectId])
+    applyMeta(route)
+  }, [route])
 
   const PageComponent = page ? PAGES[page] : null
 
