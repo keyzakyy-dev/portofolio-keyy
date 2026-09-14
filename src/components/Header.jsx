@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ThemeToggler } from './ThemeToggler.jsx'
 import { useIsMobile } from '../hooks/useIsMobile.js'
+import { navigateTo } from '../hooks/useRoute.js'
 
 const navbarLogo = (
   <span className="text-2xl font-bold tracking-tight leading-none">
@@ -99,8 +100,9 @@ export default function Header({ transition = true }) {
               animate={{ top: isMobile ? 16 : 22 }}
             >
               <a
-                href="#"
+                href="/"
                 aria-label="keyy"
+                onClick={(e) => { e.preventDefault(); navigateTo(null) }}
                 className="inline-flex items-center text-[var(--color-primary)] transition-colors duration-200 hover:opacity-70"
               >
                 {navbarLogo}

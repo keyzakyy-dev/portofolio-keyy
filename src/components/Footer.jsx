@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { githubPath, youtubePath, instagramPath, facebookPath } from '../constants/icons.js'
+import { navigateTo } from '../hooks/useRoute.js'
 
 const socialLinks = [
   { path: githubPath, href: 'https://github.com/keyzakyy-dev', label: 'GitHub' },
@@ -43,7 +44,8 @@ export default function Footer({ delay = 1.8 }) {
         >
           <span>Built by</span>
           <a
-            href="#"
+            href="/"
+            onClick={(e) => { e.preventDefault(); navigateTo(null) }}
             className="font-medium underline underline-offset-2 transition-colors hover:opacity-70"
           >
             keyzakyy.

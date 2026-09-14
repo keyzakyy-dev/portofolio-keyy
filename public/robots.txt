@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://keyzakyy.vercel.app/sitemap.xml
+Sitemap: https://keyy-portofolio.vercel.app/sitemap.xml

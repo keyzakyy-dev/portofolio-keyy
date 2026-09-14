@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import { githubPath } from '../constants/icons.js'
 import { projects } from '../data/projects.js'
+import NotFoundPage from './NotFoundPage.jsx'
 
 const inView = (delay = 0) => ({
   initial: { opacity: 0, y: 30 },
@@ -288,22 +289,14 @@ function ProjectDetailView({ project, onBackToProjects }) {
   )
 }
 
-export default function WorkPage({ onBack }) {
-  const [selectedProjectId, setSelectedProjectId] = useState(null)
-
-  const selectedProject = projects.find((p) => p.id === selectedProjectId)
+export default function WorkPage({ onBack, onNavigate, projectId }) {
+  const selectedProject = projects.find((p) => p.id === projectId)
   const featured = projects.find((p) => p.featured)
   const rest = projects.filter((p) => !p.featured)
 
-  const handleSelect = (id) => {
-    setSelectedProjectId(id)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  const handleSelect = (id) => onNavigate?.('work', id)
 
-  const handleBackToProjects = () => {
-    setSelectedProjectId(null)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  const handleBackToProjects = () => onNavigate?.('work')
 
   return (
     <div className="mx-auto max-w-5xl px-5 pt-24 pb-20">
@@ -314,6 +307,8 @@ export default function WorkPage({ onBack }) {
             project={selectedProject}
             onBackToProjects={handleBackToProjects}
           />
+        ) : projectId ? (
+          <NotFoundPage backLabel="Kembali ke Daftar Proyek" onBack={handleBackToProjects} />
         ) : (
           <motion.div
             key="project-list"
