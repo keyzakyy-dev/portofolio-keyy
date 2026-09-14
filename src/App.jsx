@@ -53,7 +53,7 @@ export default function App() {
         <AnimatePresence mode="wait">
           {PageComponent ? (
             <Suspense fallback={null}>
-              <PageComponent key={page} onBack={() => navigate(null)} onNavigate={navigate} />
+              <PageComponent key={page} onBack={() => navigate(null)} onNavigate={navigate} projectId={route.projectId} />
             </Suspense>
           ) : (
             transition && (
