@@ -26,6 +26,29 @@ export const projects = [
     featured: true,
   },
   {
+    id: 'keyzai',
+    title: 'KeyzAI — AI Chatbot',
+    category: 'AI Chatbot & Fullstack Web App',
+    year: '2026',
+    desc: 'Chatbot AI modern berbasis OpenAI API dengan relay serverless Cloudflare Worker. UI chat real-time, riwayat pesan ber-timestamp, dan error handling + retry logic.',
+    longDesc:
+      'KeyzAI adalah aplikasi web chatbot AI dengan arsitektur fullstack: frontend React berkomunikasi dengan Cloudflare Worker (serverless) yang bertindak sebagai relay aman menuju OpenAI API. API key tidak pernah tersimpan di sisi klien — seluruh permintaan diproteksi CORS dan divalidasi di trust boundary, menghasilkan asisten AI yang cepat, aman, dan siap produksi.',
+    features: [
+      'Chat real-time dengan OpenAI API melalui relay serverless Cloudflare Worker',
+      'API key tersimpan aman di Cloudflare secrets — tidak pernah diekspos ke frontend',
+      'Riwayat pesan lengkap dengan timestamp dan indikator loading saat menunggu respons',
+      'Error handling komprehensif: validasi input, retry logic, dan pesan error yang ramah pengguna',
+      'Relay API dilindungi CORS dengan validasi input di trust boundary',
+      'Desain antarmuka bersih & profesional yang responsif di desktop maupun mobile',
+    ],
+    screenshots: [
+      { url: '/screenshots/keyzai/preview.png', caption: 'Tampilan Antarmuka Chat KeyzAI' },
+    ],
+    stack: ['React 18', 'Vite', 'Tailwind CSS', 'shadcn/ui', 'Cloudflare Workers', 'OpenAI API'],
+    live: 'https://keyz-ai.vercel.app',
+    repo: 'https://github.com/keyzakyy-dev/KeyzAI',
+  },
+  {
     id: 'lms-itg',
     title: 'LMS Landing Page ITG',
     category: 'Frontend Landing Page & UI/UX',
